@@ -1,0 +1,536 @@
+{
+  "approvals": [
+    {
+      "decision": "approve",
+      "fingerprint": "571a31fb2c25909b24a12fabd7073c9b756a33ba9a467afc378dfe13f34b148c",
+      "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+      "reviewer": "demo-reviewer-1",
+      "simulated": true,
+      "task_id": "clarification"
+    },
+    {
+      "decision": "approve",
+      "fingerprint": "571a31fb2c25909b24a12fabd7073c9b756a33ba9a467afc378dfe13f34b148c",
+      "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+      "reviewer": "demo-reviewer-2",
+      "simulated": true,
+      "task_id": "clarification"
+    },
+    {
+      "decision": "approve",
+      "fingerprint": "dc2b687102632aab2c6839cbcbe512b43a59e363a41b1a074ef2f7d59d209ade",
+      "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+      "reviewer": "demo-reviewer-1",
+      "simulated": true,
+      "task_id": "design"
+    },
+    {
+      "decision": "approve",
+      "fingerprint": "dc2b687102632aab2c6839cbcbe512b43a59e363a41b1a074ef2f7d59d209ade",
+      "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+      "reviewer": "demo-reviewer-2",
+      "simulated": true,
+      "task_id": "design"
+    },
+    {
+      "decision": "approve",
+      "fingerprint": "11d3ff9ed3bbf96ecc9d0d886434f04e1d2eb83a0260198434ad5a7d51e95f03",
+      "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+      "reviewer": "demo-reviewer-1",
+      "simulated": true,
+      "task_id": "release"
+    }
+  ],
+  "dag": {
+    "edges": [
+      [
+        "intake",
+        "clarification"
+      ],
+      [
+        "clarification",
+        "plan"
+      ],
+      [
+        "plan",
+        "design"
+      ],
+      [
+        "design",
+        "implementation"
+      ],
+      [
+        "design",
+        "test_preparation"
+      ],
+      [
+        "implementation",
+        "validation"
+      ],
+      [
+        "test_preparation",
+        "validation"
+      ],
+      [
+        "validation",
+        "security"
+      ],
+      [
+        "security",
+        "release"
+      ],
+      [
+        "release",
+        "summary"
+      ]
+    ],
+    "nodes": [
+      {
+        "config": {
+          "ambiguous": true,
+          "requirement": "Make the URL shortener enterprise-ready and secure."
+        },
+        "deps": [],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "intake",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "intake",
+        "writes": [
+          "requirements.json"
+        ]
+      },
+      {
+        "config": {
+          "requirement": "Make the URL shortener enterprise-ready and secure."
+        },
+        "deps": [
+          "intake"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "clarification",
+        "max_attempts": 2,
+        "risk": "high",
+        "role": "design",
+        "writes": [
+          "clarification.json"
+        ]
+      },
+      {
+        "config": {
+          "scope": "security response headers"
+        },
+        "deps": [
+          "clarification"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "plan",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "planner",
+        "writes": [
+          "plan.json"
+        ]
+      },
+      {
+        "config": {},
+        "deps": [
+          "plan"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "design",
+        "max_attempts": 2,
+        "risk": "high",
+        "role": "design",
+        "writes": [
+          "design.json"
+        ]
+      },
+      {
+        "config": {
+          "scenario": "ambiguous"
+        },
+        "deps": [
+          "design"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "implementation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "implementer",
+        "writes": [
+          "shortener/app.py",
+          "approved-scope.json"
+        ]
+      },
+      {
+        "config": {
+          "scenario": "ambiguous"
+        },
+        "deps": [
+          "design"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "test_preparation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "test_author",
+        "writes": [
+          "tests/test_service.py",
+          "tests/security/test_regressions.py",
+          "tests/test_scope.py"
+        ]
+      },
+      {
+        "config": {},
+        "deps": [
+          "implementation",
+          "test_preparation"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "validation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "validator",
+        "writes": []
+      },
+      {
+        "config": {},
+        "deps": [
+          "validation"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "security",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "security",
+        "writes": []
+      },
+      {
+        "config": {},
+        "deps": [
+          "security"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "release",
+        "max_attempts": 2,
+        "risk": "release",
+        "role": "release",
+        "writes": [
+          "release-review.json"
+        ]
+      },
+      {
+        "config": {},
+        "deps": [
+          "release"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "summary",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "documenter",
+        "writes": [
+          "engineering-summary.json"
+        ]
+      }
+    ],
+    "scenario": "ambiguous",
+    "version": 2
+  },
+  "nodes": [
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "clarification",
+      "input_hashes": {
+        "intake": "b1979c421f63b05a54d9c93bb764341b12962a5c5f59a290f0d3d9be31419f23"
+      },
+      "output_hash": "430e7a2377812a8e55811f2141a117d3745d79ebaab2adb9ea595b6895bcf653",
+      "spec": {
+        "config": {
+          "requirement": "Make the URL shortener enterprise-ready and secure."
+        },
+        "deps": [
+          "intake"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "clarification",
+        "max_attempts": 2,
+        "risk": "high",
+        "role": "design",
+        "writes": [
+          "clarification.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "design",
+      "input_hashes": {
+        "plan": "21c5fb933e8eb7a3411dcf4841784543a239a857cfd3aef0cd483d3fd1763e6b"
+      },
+      "output_hash": "e45f222db223c5c06fab62a6ced3a6c23eedf9eff91b8cd33fbb066922e356d1",
+      "spec": {
+        "config": {},
+        "deps": [
+          "plan"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "design",
+        "max_attempts": 2,
+        "risk": "high",
+        "role": "design",
+        "writes": [
+          "design.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "implementation",
+      "input_hashes": {
+        "design": "e45f222db223c5c06fab62a6ced3a6c23eedf9eff91b8cd33fbb066922e356d1"
+      },
+      "output_hash": "32e7d418715ab544b84f08e7b88d2063952c295a5b6793ad1336617c111caa29",
+      "spec": {
+        "config": {
+          "scenario": "ambiguous"
+        },
+        "deps": [
+          "design"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "implementation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "implementer",
+        "writes": [
+          "shortener/app.py",
+          "approved-scope.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "intake",
+      "input_hashes": {
+        "requirement": "57eebfcc99d08b6c1ea2962ce69a4a7420f623fad8423d9f6aa79bc72404286e"
+      },
+      "output_hash": "b1979c421f63b05a54d9c93bb764341b12962a5c5f59a290f0d3d9be31419f23",
+      "spec": {
+        "config": {
+          "ambiguous": true,
+          "requirement": "Make the URL shortener enterprise-ready and secure."
+        },
+        "deps": [],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "intake",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "intake",
+        "writes": [
+          "requirements.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "plan",
+      "input_hashes": {
+        "clarification": "430e7a2377812a8e55811f2141a117d3745d79ebaab2adb9ea595b6895bcf653"
+      },
+      "output_hash": "21c5fb933e8eb7a3411dcf4841784543a239a857cfd3aef0cd483d3fd1763e6b",
+      "spec": {
+        "config": {
+          "scope": "security response headers"
+        },
+        "deps": [
+          "clarification"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "plan",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "planner",
+        "writes": [
+          "plan.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "release",
+      "input_hashes": {
+        "security": "2f251007bf9dda268225edafebd59cc5a1f2a2b4422b5f138fae461e11205ec1"
+      },
+      "output_hash": "b78904a8b1b37dc662a24fb96fd203fdf61378be8a49eee1955f7602d82f6fa0",
+      "spec": {
+        "config": {},
+        "deps": [
+          "security"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "release",
+        "max_attempts": 2,
+        "risk": "release",
+        "role": "release",
+        "writes": [
+          "release-review.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "security",
+      "input_hashes": {
+        "validation": "be4fe77e0cc81c241ee5917aaecbd1b3c5534518e60175a71c6a9823c2afd544"
+      },
+      "output_hash": "2f251007bf9dda268225edafebd59cc5a1f2a2b4422b5f138fae461e11205ec1",
+      "spec": {
+        "config": {},
+        "deps": [
+          "validation"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "security",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "security",
+        "writes": []
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "summary",
+      "input_hashes": {
+        "release": "b78904a8b1b37dc662a24fb96fd203fdf61378be8a49eee1955f7602d82f6fa0"
+      },
+      "output_hash": "62770e3592c37a77cebc305ace3f613fc1b8d8412d3d1d0c7fa348ba49f38abd",
+      "spec": {
+        "config": {},
+        "deps": [
+          "release"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "summary",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "documenter",
+        "writes": [
+          "engineering-summary.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "test_preparation",
+      "input_hashes": {
+        "design": "e45f222db223c5c06fab62a6ced3a6c23eedf9eff91b8cd33fbb066922e356d1"
+      },
+      "output_hash": "902e010bfd73fe278504de2d4a2b740e4e1649acd01177e554b8f0d2d2567172",
+      "spec": {
+        "config": {
+          "scenario": "ambiguous"
+        },
+        "deps": [
+          "design"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "test_preparation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "test_author",
+        "writes": [
+          "tests/test_service.py",
+          "tests/security/test_regressions.py",
+          "tests/test_scope.py"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "validation",
+      "input_hashes": {
+        "implementation": "32e7d418715ab544b84f08e7b88d2063952c295a5b6793ad1336617c111caa29",
+        "test_preparation": "902e010bfd73fe278504de2d4a2b740e4e1649acd01177e554b8f0d2d2567172"
+      },
+      "output_hash": "be4fe77e0cc81c241ee5917aaecbd1b3c5534518e60175a71c6a9823c2afd544",
+      "spec": {
+        "config": {},
+        "deps": [
+          "implementation",
+          "test_preparation"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "validation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "validator",
+        "writes": []
+      },
+      "status": "PASSED"
+    }
+  ],
+  "requirement_hash": "57eebfcc99d08b6c1ea2962ce69a4a7420f623fad8423d9f6aa79bc72404286e",
+  "run_id": "9d2fb905213e468dbd17a2016e0cfae9",
+  "status": "PASSED"
+}

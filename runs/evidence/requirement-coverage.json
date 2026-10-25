@@ -1,0 +1,274 @@
+[
+  {
+    "criterion": "Core 1 Requirement understanding",
+    "status": "prototype-template",
+    "evidence": [
+      "runs/evidence/scenarios/ambiguous-9d2fb905213e468dbd17a2016e0cfae9/workspace/requirements.json",
+      "runs/evidence/scenarios/ambiguous-9d2fb905213e468dbd17a2016e0cfae9/workspace/approved-scope.json"
+    ]
+  },
+  {
+    "criterion": "Core 2 Task decomposition",
+    "status": "prototype-template-real-DAG",
+    "evidence": [
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/dag.json",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/state.json"
+    ]
+  },
+  {
+    "criterion": "Core 3 Brownfield codebase reasoning",
+    "status": "verified-AST-analysis",
+    "evidence": [
+      "runs/evidence/scenarios/brownfield-96f54d1628184a3190a1ced4da1c6382/workspace/impact-analysis.json",
+      "runs/evidence/scenarios/brownfield-96f54d1628184a3190a1ced4da1c6382/workspace/change.diff"
+    ]
+  },
+  {
+    "criterion": "Core 4 SDLC coordination",
+    "status": "verified",
+    "evidence": [
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/events.jsonl",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/artifacts/summary.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Explicit graph and gates",
+    "status": "verified",
+    "evidence": [
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/dag.json",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/commands",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Sequential parallel synchronization",
+    "status": "verified",
+    "evidence": [
+      "tests/test_workflow.py",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/artifacts/implementation.json",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/artifacts/test_preparation.json",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Context state decision lineage",
+    "status": "verified",
+    "evidence": [
+      "orchestrator/store.py",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/events.jsonl",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/artifacts/validation.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Approval checkpoints",
+    "status": "verified-mechanism-demo-decisions",
+    "evidence": [
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/approvals.json",
+      "tests/test_workflow.py",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Retry fallback",
+    "status": "verified",
+    "evidence": [
+      "tests/test_workflow.py",
+      "runs/evidence/scenarios/brownfield-96f54d1628184a3190a1ced4da1c6382/events.jsonl",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Rollback safe-stop recovery",
+    "status": "verified",
+    "evidence": [
+      "tests/test_workflow.py",
+      "runs/evidence/scenarios/brownfield-96f54d1628184a3190a1ced4da1c6382/events.jsonl",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Security compliance change control",
+    "status": "partial-trusted-local-policy",
+    "evidence": [
+      "policy.yaml",
+      "orchestrator/policy.py",
+      "docs/limitations.md",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Audit observability traceability",
+    "status": "verified-local",
+    "evidence": [
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/events.jsonl",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/commands",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/state.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Reliability metrics",
+    "status": "verified",
+    "evidence": [
+      "runs/evidence/scenarios/brownfield-96f54d1628184a3190a1ced4da1c6382/metrics.json",
+      "tests/test_workflow.py",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 4 Dynamic replanning",
+    "status": "verified",
+    "evidence": [
+      "runs/evidence/scenarios/ambiguous-9d2fb905213e468dbd17a2016e0cfae9/events.jsonl",
+      "tests/test_workflow.py",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 5 Engineering output generation",
+    "status": "verified-template-tools",
+    "evidence": [
+      "shortener/app.py",
+      "alembic/versions/0001_links.py",
+      "tests/test_contract.py",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 6 Validation risk control",
+    "status": "verified-prototype",
+    "evidence": [
+      "docs/threat-model.md",
+      "docs/decision-log.md",
+      "runs/evidence/final-security-20261025T173342905795Z.json"
+    ]
+  },
+  {
+    "criterion": "Core 7 Controlled autonomy",
+    "status": "verified-local-mechanism",
+    "evidence": [
+      "orchestrator/policy.py",
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/approvals.json",
+      "docs/limitations.md"
+    ]
+  },
+  {
+    "criterion": "Core 8 Engineering summary",
+    "status": "provided",
+    "evidence": [
+      "docs/engineering-summary.md",
+      "docs/limitations.md"
+    ]
+  },
+  {
+    "criterion": "Deliverable Runnable prototype",
+    "status": "verified",
+    "evidence": [
+      "runs/evidence/final-http-20261025T173343877671Z.json",
+      "runs/evidence/final-greenfield-20261025T173344470901Z.json",
+      "Makefile"
+    ]
+  },
+  {
+    "criterion": "Deliverable Architecture overview",
+    "status": "provided",
+    "evidence": [
+      "docs/architecture.md",
+      "docs/decision-log.md"
+    ]
+  },
+  {
+    "criterion": "Deliverable Three scenarios",
+    "status": "verified",
+    "evidence": [
+      "runs/evidence/final-greenfield-20261025T173344470901Z.json",
+      "runs/evidence/final-brownfield-20261025T173346379631Z.json",
+      "runs/evidence/final-ambiguous-20261025T173348623056Z.json",
+      "docs/scenarios.md"
+    ]
+  },
+  {
+    "criterion": "Deliverable Setup",
+    "status": "provided-and-smoke-verified",
+    "evidence": [
+      "README.md",
+      "uv.lock",
+      "Makefile"
+    ]
+  },
+  {
+    "criterion": "Deliverable Testing limitations tradeoffs",
+    "status": "provided",
+    "evidence": [
+      "docs/testing.md",
+      "docs/limitations.md",
+      "docs/decision-log.md",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Evaluation Orchestration effectiveness",
+    "status": "reviewer-assessment-supported",
+    "evidence": [
+      "tests/test_workflow.py",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Evaluation Architecture system design quality",
+    "status": "reviewer-assessment-supported",
+    "evidence": [
+      "docs/architecture.md",
+      "docs/decision-log.md"
+    ]
+  },
+  {
+    "criterion": "Evaluation Decomposition execution depth",
+    "status": "reviewer-assessment-supported",
+    "evidence": [
+      "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d/dag.json",
+      "runs/evidence/scenarios/brownfield-96f54d1628184a3190a1ced4da1c6382/workspace/change.diff"
+    ]
+  },
+  {
+    "criterion": "Evaluation Output realism quality",
+    "status": "reviewer-assessment-supported",
+    "evidence": [
+      "shortener/app.py",
+      "runs/evidence/final-checks-20261025T173330172670Z.json",
+      "runs/evidence/final-http-20261025T173343877671Z.json"
+    ]
+  },
+  {
+    "criterion": "Evaluation Validation risk rigor",
+    "status": "reviewer-assessment-supported",
+    "evidence": [
+      "docs/threat-model.md",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Evaluation Decision clarity defensibility",
+    "status": "reviewer-assessment-supported",
+    "evidence": [
+      "docs/decision-log.md",
+      "docs/demo.md"
+    ]
+  },
+  {
+    "criterion": "Evaluation Core engineering principles",
+    "status": "reviewer-assessment-supported",
+    "evidence": [
+      "docs/architecture.md",
+      "docs/limitations.md",
+      "runs/evidence/final-checks-20261025T173330172670Z.json"
+    ]
+  },
+  {
+    "criterion": "Evaluation Engineering judgment",
+    "status": "reviewer-assessment-supported",
+    "evidence": [
+      "docs/ai-usage-and-judgment.md",
+      "docs/limitations.md"
+    ]
+  }
+]

@@ -1,0 +1,217 @@
+{
+  "approvals": "SIMULATED DEMO ONLY",
+  "evidence": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/6141a2eb87ec4264b377c1b2a7bcf92d",
+  "initially_blocked_without_approval": true,
+  "metrics": {
+    "approval_wait_observations": 2,
+    "approval_wait_seconds": 0.085176,
+    "end_to_end_seconds": 1.668232,
+    "gate_failures": {},
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses.",
+    "mttr_seconds": null,
+    "observed_runs": 4,
+    "per_task_latency_seconds": {
+      "design": [
+        0.007706
+      ],
+      "implementation": [
+        0.058935
+      ],
+      "intake": [
+        0.006771
+      ],
+      "plan": [
+        0.007241
+      ],
+      "release": [
+        0.010542
+      ],
+      "security": [
+        0.4658
+      ],
+      "summary": [
+        0.011209
+      ],
+      "test_preparation": [
+        0.05476
+      ],
+      "validation": [
+        0.914708
+      ]
+    },
+    "repair_observations": 0,
+    "retry_count": 0,
+    "retry_frequency": 0.0,
+    "rollback_count": 0,
+    "rollback_frequency": 0.0,
+    "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "status": "PASSED",
+    "task_attempt_success_rate": 1.0,
+    "task_attempts": 9
+  },
+  "reasoning": "deterministic templates",
+  "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+  "scenario": "greenfield",
+  "status": "PASSED",
+  "tasks": [
+    {
+      "config": {
+        "ambiguous": false,
+        "requirement": "Build a URL shortener with REST APIs, persistence, redirection, and analytics."
+      },
+      "deps": [],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "intake",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "intake",
+      "writes": [
+        "requirements.json"
+      ]
+    },
+    {
+      "config": {
+        "scope": "Build a URL shortener with REST APIs, persistence, redirection, and analytics."
+      },
+      "deps": [
+        "intake"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "plan",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "planner",
+      "writes": [
+        "plan.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "plan"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "design",
+      "max_attempts": 2,
+      "risk": "high",
+      "role": "design",
+      "writes": [
+        "design.json"
+      ]
+    },
+    {
+      "config": {
+        "scenario": "greenfield"
+      },
+      "deps": [
+        "design"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "implementation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "implementer",
+      "writes": [
+        "shortener/__init__.py",
+        "shortener/app.py",
+        "shortener/models.py",
+        "shortener/database.py",
+        "shortener/__main__.py",
+        "alembic.ini",
+        "alembic/env.py",
+        "alembic/versions/0001_links.py"
+      ]
+    },
+    {
+      "config": {
+        "scenario": "greenfield"
+      },
+      "deps": [
+        "design"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "test_preparation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "test_author",
+      "writes": [
+        "tests/test_service.py",
+        "tests/security/test_regressions.py"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "implementation",
+        "test_preparation"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "validation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "validator",
+      "writes": []
+    },
+    {
+      "config": {},
+      "deps": [
+        "validation"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "security",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "security",
+      "writes": []
+    },
+    {
+      "config": {},
+      "deps": [
+        "security"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "release",
+      "max_attempts": 2,
+      "risk": "release",
+      "role": "release",
+      "writes": [
+        "release-review.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "release"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "summary",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "documenter",
+      "writes": [
+        "engineering-summary.json"
+      ]
+    }
+  ],
+  "workspace": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/6141a2eb87ec4264b377c1b2a7bcf92d/workspace"
+}

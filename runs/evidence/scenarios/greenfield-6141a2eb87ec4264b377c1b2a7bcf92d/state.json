@@ -1,0 +1,480 @@
+{
+  "approvals": [
+    {
+      "decision": "approve",
+      "fingerprint": "e00cecc68055396811f9cb64311dd070d09ee7b8258af991ee6b7e10df4feb83",
+      "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+      "reviewer": "demo-reviewer-1",
+      "simulated": true,
+      "task_id": "design"
+    },
+    {
+      "decision": "approve",
+      "fingerprint": "e00cecc68055396811f9cb64311dd070d09ee7b8258af991ee6b7e10df4feb83",
+      "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+      "reviewer": "demo-reviewer-2",
+      "simulated": true,
+      "task_id": "design"
+    },
+    {
+      "decision": "approve",
+      "fingerprint": "761b2c6cb1c151889acdf6a1f19c4a27157ece603dc81c0a4d31ad76133503e0",
+      "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+      "reviewer": "demo-reviewer-1",
+      "simulated": true,
+      "task_id": "release"
+    }
+  ],
+  "dag": {
+    "edges": [
+      [
+        "intake",
+        "plan"
+      ],
+      [
+        "plan",
+        "design"
+      ],
+      [
+        "design",
+        "implementation"
+      ],
+      [
+        "design",
+        "test_preparation"
+      ],
+      [
+        "implementation",
+        "validation"
+      ],
+      [
+        "test_preparation",
+        "validation"
+      ],
+      [
+        "validation",
+        "security"
+      ],
+      [
+        "security",
+        "release"
+      ],
+      [
+        "release",
+        "summary"
+      ]
+    ],
+    "nodes": [
+      {
+        "config": {
+          "ambiguous": false,
+          "requirement": "Build a URL shortener with REST APIs, persistence, redirection, and analytics."
+        },
+        "deps": [],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "intake",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "intake",
+        "writes": [
+          "requirements.json"
+        ]
+      },
+      {
+        "config": {
+          "scope": "Build a URL shortener with REST APIs, persistence, redirection, and analytics."
+        },
+        "deps": [
+          "intake"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "plan",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "planner",
+        "writes": [
+          "plan.json"
+        ]
+      },
+      {
+        "config": {},
+        "deps": [
+          "plan"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "design",
+        "max_attempts": 2,
+        "risk": "high",
+        "role": "design",
+        "writes": [
+          "design.json"
+        ]
+      },
+      {
+        "config": {
+          "scenario": "greenfield"
+        },
+        "deps": [
+          "design"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "implementation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "implementer",
+        "writes": [
+          "shortener/__init__.py",
+          "shortener/app.py",
+          "shortener/models.py",
+          "shortener/database.py",
+          "shortener/__main__.py",
+          "alembic.ini",
+          "alembic/env.py",
+          "alembic/versions/0001_links.py"
+        ]
+      },
+      {
+        "config": {
+          "scenario": "greenfield"
+        },
+        "deps": [
+          "design"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "test_preparation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "test_author",
+        "writes": [
+          "tests/test_service.py",
+          "tests/security/test_regressions.py"
+        ]
+      },
+      {
+        "config": {},
+        "deps": [
+          "implementation",
+          "test_preparation"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "validation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "validator",
+        "writes": []
+      },
+      {
+        "config": {},
+        "deps": [
+          "validation"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "security",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "security",
+        "writes": []
+      },
+      {
+        "config": {},
+        "deps": [
+          "security"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "release",
+        "max_attempts": 2,
+        "risk": "release",
+        "role": "release",
+        "writes": [
+          "release-review.json"
+        ]
+      },
+      {
+        "config": {},
+        "deps": [
+          "release"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "summary",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "documenter",
+        "writes": [
+          "engineering-summary.json"
+        ]
+      }
+    ],
+    "scenario": "greenfield",
+    "version": 2
+  },
+  "nodes": [
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "design",
+      "input_hashes": {
+        "plan": "1cc6fcca81bb937a85dbe7461326b968c62d958c6b871c3d13bae6acb29dfaef"
+      },
+      "output_hash": "95ffa5668afee5a360df34fe33065e193dd09895e483151617fdc39d3b18a087",
+      "spec": {
+        "config": {},
+        "deps": [
+          "plan"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "design",
+        "max_attempts": 2,
+        "risk": "high",
+        "role": "design",
+        "writes": [
+          "design.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "implementation",
+      "input_hashes": {
+        "design": "95ffa5668afee5a360df34fe33065e193dd09895e483151617fdc39d3b18a087"
+      },
+      "output_hash": "84e65be3b3b4c8f23661eb96743f0e645b663d809d4ef276d888122e1f3fd9c1",
+      "spec": {
+        "config": {
+          "scenario": "greenfield"
+        },
+        "deps": [
+          "design"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "implementation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "implementer",
+        "writes": [
+          "shortener/__init__.py",
+          "shortener/app.py",
+          "shortener/models.py",
+          "shortener/database.py",
+          "shortener/__main__.py",
+          "alembic.ini",
+          "alembic/env.py",
+          "alembic/versions/0001_links.py"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "intake",
+      "input_hashes": {
+        "requirement": "f46507806f40c946902748a5367119aec94eda39ccd68b318da28a30d6ae63ee"
+      },
+      "output_hash": "d92a5af414571fc2d19daa8fc5a1719d24002c29643661224ba421b4f560fed1",
+      "spec": {
+        "config": {
+          "ambiguous": false,
+          "requirement": "Build a URL shortener with REST APIs, persistence, redirection, and analytics."
+        },
+        "deps": [],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "intake",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "intake",
+        "writes": [
+          "requirements.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "plan",
+      "input_hashes": {
+        "intake": "d92a5af414571fc2d19daa8fc5a1719d24002c29643661224ba421b4f560fed1"
+      },
+      "output_hash": "1cc6fcca81bb937a85dbe7461326b968c62d958c6b871c3d13bae6acb29dfaef",
+      "spec": {
+        "config": {
+          "scope": "Build a URL shortener with REST APIs, persistence, redirection, and analytics."
+        },
+        "deps": [
+          "intake"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "plan",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "planner",
+        "writes": [
+          "plan.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "release",
+      "input_hashes": {
+        "security": "a477956daa569c4b5f8149280dea54ecaf87f7f3f27bbde0c2596319f3b6795a"
+      },
+      "output_hash": "b78904a8b1b37dc662a24fb96fd203fdf61378be8a49eee1955f7602d82f6fa0",
+      "spec": {
+        "config": {},
+        "deps": [
+          "security"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "release",
+        "max_attempts": 2,
+        "risk": "release",
+        "role": "release",
+        "writes": [
+          "release-review.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "security",
+      "input_hashes": {
+        "validation": "647c8e582323c64dee46ed00f729e120456ed5888ee14aa7c2e01ed263e68348"
+      },
+      "output_hash": "a477956daa569c4b5f8149280dea54ecaf87f7f3f27bbde0c2596319f3b6795a",
+      "spec": {
+        "config": {},
+        "deps": [
+          "validation"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "security",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "security",
+        "writes": []
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "summary",
+      "input_hashes": {
+        "release": "b78904a8b1b37dc662a24fb96fd203fdf61378be8a49eee1955f7602d82f6fa0"
+      },
+      "output_hash": "62770e3592c37a77cebc305ace3f613fc1b8d8412d3d1d0c7fa348ba49f38abd",
+      "spec": {
+        "config": {},
+        "deps": [
+          "release"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "summary",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "documenter",
+        "writes": [
+          "engineering-summary.json"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "test_preparation",
+      "input_hashes": {
+        "design": "95ffa5668afee5a360df34fe33065e193dd09895e483151617fdc39d3b18a087"
+      },
+      "output_hash": "81ad4f2f7e0e89612c1beba3c5189da9fe9e6a735f64840230cbd7282b747d9b",
+      "spec": {
+        "config": {
+          "scenario": "greenfield"
+        },
+        "deps": [
+          "design"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "test_preparation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "test_author",
+        "writes": [
+          "tests/test_service.py",
+          "tests/security/test_regressions.py"
+        ]
+      },
+      "status": "PASSED"
+    },
+    {
+      "attempts": 1,
+      "failure": null,
+      "id": "validation",
+      "input_hashes": {
+        "implementation": "84e65be3b3b4c8f23661eb96743f0e645b663d809d4ef276d888122e1f3fd9c1",
+        "test_preparation": "81ad4f2f7e0e89612c1beba3c5189da9fe9e6a735f64840230cbd7282b747d9b"
+      },
+      "output_hash": "647c8e582323c64dee46ed00f729e120456ed5888ee14aa7c2e01ed263e68348",
+      "spec": {
+        "config": {},
+        "deps": [
+          "implementation",
+          "test_preparation"
+        ],
+        "entry": "dependencies_passed_and_approval_bound_to_inputs",
+        "exit": "json_schema_and_tool_validation",
+        "fallback": "human_escalation",
+        "id": "validation",
+        "max_attempts": 2,
+        "risk": "low",
+        "role": "validator",
+        "writes": []
+      },
+      "status": "PASSED"
+    }
+  ],
+  "requirement_hash": "f46507806f40c946902748a5367119aec94eda39ccd68b318da28a30d6ae63ee",
+  "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+  "status": "PASSED"
+}

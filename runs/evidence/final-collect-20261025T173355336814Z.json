@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "scripts/collect_submission.py"
+  ],
+  "cwd": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener",
+  "started": "2026-10-25T17:33:55.336814+00:00",
+  "finished": "2026-10-25T17:33:55.384295+00:00",
+  "exit_code": 0,
+  "output_path": "runs/evidence/final-collect-20261025T173355336814Z.log",
+  "output_excerpt": "{\n  \"packaged_scenarios\": {\n    \"greenfield\": {\n      \"run_id\": \"6141a2eb87ec4264b377c1b2a7bcf92d\",\n      \"status\": \"PASSED\",\n      \"path\": \"runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d\"\n    },\n    \"brownfield\": {\n      \"run_id\": \"96f54d1628184a3190a1ced4da1c6382\",\n      \"status\": \"PASSED\",\n      \"path\": \"runs/evidence/scenarios/brownfield-96f54d1628184a3190a1ced4da1c6382\"\n    },\n    \"ambiguous\": {\n      \"run_id\": \"9d2fb905213e468dbd17a2016e0cfae9\",\n      \"status\": \"PASSED\",\n      \"path\": \"runs/evidence/scenarios/ambiguous-9d2fb905213e468dbd17a2016e0cfae9\"\n    }\n  },\n  \"verified_file_count\": 114\n}\n"
+}

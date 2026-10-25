@@ -1,0 +1,12 @@
+{
+  "command": [
+    "make",
+    "check"
+  ],
+  "cwd": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener",
+  "started": "2026-10-25T17:12:31.601803+00:00",
+  "finished": "2026-10-25T17:12:33.725449+00:00",
+  "exit_code": 0,
+  "output_path": "runs/evidence/v3-baseline-20261025T171231601803Z.log",
+  "output_excerpt": ".venv/bin/ruff check .\nAll checks passed!\n.venv/bin/ruff format --check .\n17 files already formatted\n.venv/bin/mypy orchestrator\nSuccess: no issues found in 6 source files\n.venv/bin/python -m pytest --cov=orchestrator --cov-report=term-missing --cov-report=json:runs/evidence/coverage.json --cov-report=html:runs/evidence/htmlcov\n============================= test session starts ==============================\nplatform darwin -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0\nrootdir: /Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener\nconfigfile: pyproject.toml\ntestpaths: tests\nplugins: cov-7.1.0, anyio-4.15.1\ncollected 27 items\n\ntests/test_bootstrap.py ...........................                      [100%]\n\n================================ tests coverage ================================\n______________ coverage: platform darwin, python 3.12.14-final-0 _______________\n\nName                         Stmts   Miss Branch BrPart  Cover   Missing\n------------------------------------------------------------------------\norchestrator/__init__.py         0      0      0      0   100%\norchestrator/cli.py             73      5     30      3    92%   46-53, 55, 99\norchestrator/engine.py         136      1     46      1    99%   108\norchestrator/llm.py             30      0      8      0   100%\norchestrator/store.py          108      0     16      0   100%\norchestrator/validation.py      28      0     12      0   100%\n------------------------------------------------------------------------\nTOTAL                          375      6    112      4    98%\nCoverage HTML written to dir runs/evidence/htmlcov\nCoverage JSON written to file runs/evidence/coverage.json\nRequired test coverage of 80.0% reached. Total coverage: 97.95%\n============================== 27 passed in 1.65s ==============================\n"
+}

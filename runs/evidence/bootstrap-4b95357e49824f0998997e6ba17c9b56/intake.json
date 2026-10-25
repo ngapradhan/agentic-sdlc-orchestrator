@@ -1,0 +1,7 @@
+{
+  "assumptions": [
+    "This is a static bootstrap fixture, not semantic interpretation of the supplied requirement."
+  ],
+  "mode": "mock-fixture",
+  "normalized_requirement": "Exercise persisted orchestration infrastructure for a future URL shortener."
+}

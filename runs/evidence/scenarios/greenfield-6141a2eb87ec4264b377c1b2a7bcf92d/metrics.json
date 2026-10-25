@@ -1,0 +1,49 @@
+{
+  "approval_wait_observations": 2,
+  "approval_wait_seconds": 0.085176,
+  "end_to_end_seconds": 1.668232,
+  "gate_failures": {},
+  "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses.",
+  "mttr_seconds": null,
+  "observed_runs": 4,
+  "per_task_latency_seconds": {
+    "design": [
+      0.007706
+    ],
+    "implementation": [
+      0.058935
+    ],
+    "intake": [
+      0.006771
+    ],
+    "plan": [
+      0.007241
+    ],
+    "release": [
+      0.010542
+    ],
+    "security": [
+      0.4658
+    ],
+    "summary": [
+      0.011209
+    ],
+    "test_preparation": [
+      0.05476
+    ],
+    "validation": [
+      0.914708
+    ]
+  },
+  "repair_observations": 0,
+  "retry_count": 0,
+  "retry_frequency": 0.0,
+  "rollback_count": 0,
+  "rollback_frequency": 0.0,
+  "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+  "run_success": true,
+  "run_success_rate_across_observed_runs": 1.0,
+  "status": "PASSED",
+  "task_attempt_success_rate": 1.0,
+  "task_attempts": 9
+}

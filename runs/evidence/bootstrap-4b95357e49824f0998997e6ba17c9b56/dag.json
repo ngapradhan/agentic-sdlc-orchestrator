@@ -1,0 +1,19 @@
+{
+  "edges": [
+    [
+      "intake",
+      "plan"
+    ],
+    [
+      "plan",
+      "summary"
+    ]
+  ],
+  "nodes": [
+    "intake",
+    "plan",
+    "summary"
+  ],
+  "scope": "S0 bootstrap only",
+  "version": 1
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "scripts/http_smoke.py"
+  ],
+  "cwd": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener",
+  "started": "2026-10-25T17:25:57.276993+00:00",
+  "finished": "2026-10-25T17:25:57.847018+00:00",
+  "exit_code": 0,
+  "output_path": "runs/evidence/v3-http-smoke-20261025T172557276993Z.log",
+  "output_excerpt": "{\"http_smoke\": \"PASSED\", \"health\": 200, \"create\": 201, \"resolve\": 302, \"stats_clicks\": 1, \"delete\": 204, \"deleted_resolve\": 410, \"credential_permissions\": \"0600\"}\n"
+}

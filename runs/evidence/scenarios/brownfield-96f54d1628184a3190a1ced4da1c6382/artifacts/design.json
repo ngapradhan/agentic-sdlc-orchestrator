@@ -1,0 +1,20 @@
+{
+  "data": {
+    "context_hash": "7ff970076b2d1790573f16750a721214d3561523f7a7b4af1beeb3c22fd13e3e",
+    "decisions": [
+      "public redirects and owner-isolated management",
+      "302 by default",
+      "offline deterministic reasoning with real tools"
+    ],
+    "mocked_reasoning": true,
+    "stack": [
+      "Python",
+      "FastAPI",
+      "SQLite",
+      "SQLAlchemy",
+      "Alembic"
+    ]
+  },
+  "reasoning_mode": "deterministic-template",
+  "role": "design"
+}

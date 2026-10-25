@@ -1,0 +1,268 @@
+.F..                                                                     [100%]
+=================================== FAILURES ===================================
+_____________________ test_scenario_end_to_end[brownfield] _____________________
+
+tmp_path = PosixPath('/private/var/folders/3n/p0fz5sf11vj5phkj7dst6yzc0000gn/T/pytest-of-ayush/pytest-11/test_scenario_end_to_end_brown0')
+scenario = 'brownfield'
+
+    @pytest.mark.parametrize("scenario", ["greenfield", "brownfield", "ambiguous"])
+    def test_scenario_end_to_end(tmp_path: Path, scenario: str) -> None:
+        result = demo(scenario, tmp_path / "runs")
+        assert result["status"] == "PASSED"
+        assert result["initially_blocked_without_approval"]
+        directory = Path(result["evidence"])
+        state = json.loads((directory / "state.json").read_text())
+        assert all(n["status"] == "PASSED" for n in state["nodes"])
+        assert all(a["simulated"] for a in state["approvals"])
+        assert len({a["reviewer"] for a in state["approvals"] if a["task_id"] == "design"}) == 2
+        for name in ["dag.json", "dag.mmd", "events.jsonl", "metrics.json", "scenario-summary.json"]:
+            assert (directory / name).is_file()
+        impl = json.loads((directory / "artifacts/implementation.json").read_text())["data"]
+        prep = json.loads((directory / "artifacts/test_preparation.json").read_text())["data"]
+>       assert max(impl["execution_started"], prep["execution_started"]) < min(
+            impl["execution_finished"], prep["execution_finished"]
+        )
+E       assert 1792949088.482495 < 1792949088.429229
+E        +  where 1792949088.482495 = max(1792949088.482495, 1792949088.3824608)
+E        +  and   1792949088.429229 = min(1792949088.528424, 1792949088.429229)
+
+tests/test_scenarios.py:26: AssertionError
+----------------------------- Captured stdout call -----------------------------
+{
+  "run_id": "57065b70efe949acbe48b28acf143416",
+  "scenario": "brownfield",
+  "status": "PASSED",
+  "initially_blocked_without_approval": true,
+  "reasoning": "deterministic templates",
+  "approvals": "SIMULATED DEMO ONLY",
+  "workspace": "/private/var/folders/3n/p0fz5sf11vj5phkj7dst6yzc0000gn/T/pytest-of-ayush/pytest-11/test_scenario_end_to_end_brown0/runs/57065b70efe949acbe48b28acf143416/workspace",
+  "metrics": {
+    "run_id": "57065b70efe949acbe48b28acf143416",
+    "status": "PASSED",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "observed_runs": 1,
+    "task_attempts": 11,
+    "task_attempt_success_rate": 0.9090909090909091,
+    "retry_count": 1,
+    "retry_frequency": 0.09090909090909091,
+    "rollback_count": 1,
+    "rollback_frequency": 0.09090909090909091,
+    "gate_failures": {
+      "implementation.exit": 1
+    },
+    "per_task_latency_seconds": {
+      "intake": [
+        0.006045
+      ],
+      "codebase_reasoning": [
+        0.011519
+      ],
+      "plan": [
+        0.007654
+      ],
+      "design": [
+        0.008268
+      ],
+      "implementation": [
+        0.014184,
+        0.058441
+      ],
+      "test_preparation": [
+        0.057254
+      ],
+      "validation": [
+        0.956195
+      ],
+      "security": [
+        0.486221
+      ],
+      "release": [
+        0.011098
+      ],
+      "summary": [
+        0.013205
+      ]
+    },
+    "end_to_end_seconds": 1.988222,
+    "mttr_seconds": 0.144828,
+    "repair_observations": 1,
+    "approval_wait_seconds": 0.084737,
+    "approval_wait_observations": 2,
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses."
+  },
+  "evidence": "/private/var/folders/3n/p0fz5sf11vj5phkj7dst6yzc0000gn/T/pytest-of-ayush/pytest-11/test_scenario_end_to_end_brown0/runs/57065b70efe949acbe48b28acf143416",
+  "tasks": [
+    {
+      "id": "intake",
+      "role": "intake",
+      "deps": [],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "requirements.json"
+      ],
+      "config": {
+        "requirement": "Add owner-protected daily click reporting to the existing URL shortener.",
+        "ambiguous": false
+      },
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "codebase_reasoning",
+      "role": "codebase_reasoner",
+      "deps": [
+        "intake"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "impact-analysis.json"
+      ],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "plan",
+      "role": "planner",
+      "deps": [
+        "codebase_reasoning"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "plan.json"
+      ],
+      "config": {
+        "scope": "Add owner-protected daily click reporting to the existing URL shortener."
+      },
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "design",
+      "role": "design",
+      "deps": [
+        "plan"
+      ],
+      "risk": "high",
+      "max_attempts": 2,
+      "writes": [
+        "design.json"
+      ],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "implementation",
+      "role": "implementer",
+      "deps": [
+        "design"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "shortener/app.py",
+        "shortener/reporting.py",
+        "change.diff"
+      ],
+      "config": {
+        "scenario": "brownfield"
+      },
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "test_preparation",
+      "role": "test_author",
+      "deps": [
+        "design"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "tests/test_service.py",
+        "tests/security/test_regressions.py",
+        "tests/test_reporting.py"
+      ],
+      "config": {
+        "scenario": "brownfield"
+      },
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "validation",
+      "role": "validator",
+      "deps": [
+        "implementation",
+        "test_preparation"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "security",
+      "role": "security",
+      "deps": [
+        "validation"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "release",
+      "role": "release",
+      "deps": [
+        "security"
+      ],
+      "risk": "release",
+      "max_attempts": 2,
+      "writes": [
+        "release-review.json"
+      ],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "summary",
+      "role": "documenter",
+      "deps": [
+        "release"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "engineering-summary.json"
+      ],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    }
+  ]
+}
+=========================== short test summary info ============================
+FAILED tests/test_scenarios.py::test_scenario_end_to_end[brownfield] - assert...
+1 failed, 3 passed in 6.09s

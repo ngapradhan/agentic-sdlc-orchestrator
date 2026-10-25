@@ -1,0 +1,277 @@
+.venv/bin/python scripts/evidence.py final-checks make check
+.venv/bin/ruff check orchestrator shortener tests scripts alembic
+All checks passed!
+.venv/bin/ruff format --check orchestrator shortener tests scripts alembic
+28 files already formatted
+.venv/bin/mypy orchestrator shortener
+Success: no issues found in 15 source files
+.venv/bin/python -m pytest --cov=orchestrator --cov=shortener --cov-report=term-missing --cov-report=json:runs/evidence/coverage.json --cov-report=html:runs/evidence/htmlcov
+============================= test session starts ==============================
+platform darwin -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0, anyio-4.15.1
+collected 97 items
+
+tests/security/test_regressions.py ........                              [  8%]
+tests/test_bootstrap.py ............................                     [ 37%]
+tests/test_contract.py .                                                 [ 38%]
+tests/test_scenarios.py ....                                             [ 42%]
+tests/test_service.py ........................................           [ 83%]
+tests/test_workflow.py ................                                  [100%]
+
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.12.14-final-0 _______________
+
+Name                         Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------
+orchestrator/__init__.py         0      0      0      0   100%
+orchestrator/cli.py            125     19     54      7    84%   62-63, 75-92, 106-109, 123-124, 127, 139-140, 183
+orchestrator/engine.py         136      1     46      1    99%   113
+orchestrator/llm.py             38      0     10      0   100%
+orchestrator/policy.py          90      6     32      6    90%   60, 76, 80, 129, 138, 147
+orchestrator/reasoning.py       13      1      2      1    87%   15
+orchestrator/scenarios.py      140      5     42      6    94%   174, 196, 279, 380->414, 385, 415
+orchestrator/store.py          108      0     16      0   100%
+orchestrator/validation.py      28      0     12      0   100%
+orchestrator/workflow.py       366     16    104     11    94%   117, 119, 188, 191, 212, 217, 292, 342, 370-381, 391, 516
+shortener/__init__.py            0      0      0      0   100%
+shortener/__main__.py           20     20      6      0     0%   3-35
+shortener/app.py               154      0     26      1    99%   96->98
+shortener/database.py           23      1      4      1    93%   23
+shortener/models.py             25      0      0      0   100%
+------------------------------------------------------------------------
+TOTAL                         1266     69    354     34    93%
+Coverage HTML written to dir runs/evidence/htmlcov
+Coverage JSON written to file runs/evidence/coverage.json
+Required test coverage of 80.0% reached. Total coverage: 93.15%
+======================== 97 passed, 1 warning in 12.00s ========================
+Evidence: runs/evidence/final-checks-20261025T173330172670Z.json
+.venv/bin/python scripts/evidence.py final-security make security
+.venv/bin/python -m pytest tests/security -q
+........                                                                 [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+8 passed, 1 warning in 0.30s
+Evidence: runs/evidence/final-security-20261025T173342905795Z.json
+.venv/bin/python scripts/evidence.py final-contract make contract
+.venv/bin/python -m pytest tests/test_contract.py -q
+.                                                                        [100%]
+=============================== warnings summary ===============================
+.venv/lib/python3.12/site-packages/fastapi/testclient.py:1
+  /Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+1 passed, 1 warning in 0.23s
+Evidence: runs/evidence/final-contract-20261025T173343427183Z.json
+.venv/bin/python scripts/evidence.py final-http make smoke
+.venv/bin/python scripts/http_smoke.py
+{"http_smoke": "PASSED", "health": 200, "create": 201, "resolve": 302, "stats_clicks": 1, "delete": 204, "deleted_resolve": 410, "credential_permissions": "0600"}
+Evidence: runs/evidence/final-http-20261025T173343877671Z.json
+.venv/bin/python scripts/evidence.py final-greenfield make demo-greenfield
+.venv/bin/python -m orchestrator.cli demo greenfield
+{
+  "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+  "scenario": "greenfield",
+  "status": "PASSED",
+  "initially_blocked_without_approval": true,
+  "reasoning": "deterministic templates",
+  "approvals": "SIMULATED DEMO ONLY",
+  "workspace": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/6141a2eb87ec4264b377c1b2a7bcf92d/workspace",
+  "metrics": {
+    "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+    "status": "PASSED",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "observed_runs": 4,
+    "task_attempts": 9,
+    "task_attempt_success_rate": 1.0,
+    "retry_count": 0,
+    "retry_frequency": 0.0,
+    "rollback_count": 0,
+    "rollback_frequency": 0.0,
+    "gate_failures": {},
+    "per_task_latency_seconds": {
+      "intake": [
+        0.006771
+      ],
+      "plan": [
+        0.007241
+      ],
+      "design": [
+        0.007706
+      ],
+      "test_preparation": [
+        0.05476
+      ],
+      "implementation": [
+        0.058935
+      ],
+      "validation": [
+        0.914708
+      ],
+      "security": [
+        0.4658
+      ],
+      "release": [
+        0.010542
+      ],
+      "summary": [
+        0.011209
+      ]
+    },
+    "end_to_end_seconds": 1.668232,
+    "mttr_seconds": null,
+    "repair_observations": 0,
+    "approval_wait_seconds": 0.085176,
+    "approval_wait_observations": 2,
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses."
+  },
+  "evidence": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/6141a2eb87ec4264b377c1b2a7bcf92d"
+}
+Evidence: runs/evidence/final-greenfield-20261025T173344470901Z.json
+.venv/bin/python scripts/evidence.py final-brownfield make demo-brownfield
+.venv/bin/python -m orchestrator.cli demo brownfield
+{
+  "run_id": "96f54d1628184a3190a1ced4da1c6382",
+  "scenario": "brownfield",
+  "status": "PASSED",
+  "initially_blocked_without_approval": true,
+  "reasoning": "deterministic templates",
+  "approvals": "SIMULATED DEMO ONLY",
+  "workspace": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/96f54d1628184a3190a1ced4da1c6382/workspace",
+  "metrics": {
+    "run_id": "96f54d1628184a3190a1ced4da1c6382",
+    "status": "PASSED",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "observed_runs": 5,
+    "task_attempts": 11,
+    "task_attempt_success_rate": 0.9090909090909091,
+    "retry_count": 1,
+    "retry_frequency": 0.09090909090909091,
+    "rollback_count": 1,
+    "rollback_frequency": 0.09090909090909091,
+    "gate_failures": {
+      "implementation.exit": 1
+    },
+    "per_task_latency_seconds": {
+      "intake": [
+        0.006313
+      ],
+      "codebase_reasoning": [
+        0.011748
+      ],
+      "plan": [
+        0.008071
+      ],
+      "design": [
+        0.008515
+      ],
+      "implementation": [
+        0.014123,
+        0.058592
+      ],
+      "test_preparation": [
+        0.05759
+      ],
+      "validation": [
+        0.96239
+      ],
+      "security": [
+        0.48321
+      ],
+      "release": [
+        0.011552
+      ],
+      "summary": [
+        0.013066
+      ]
+    },
+    "end_to_end_seconds": 2.007274,
+    "mttr_seconds": 0.145731,
+    "repair_observations": 1,
+    "approval_wait_seconds": 0.09779399999999999,
+    "approval_wait_observations": 2,
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses."
+  },
+  "evidence": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/96f54d1628184a3190a1ced4da1c6382"
+}
+Evidence: runs/evidence/final-brownfield-20261025T173346379631Z.json
+.venv/bin/python scripts/evidence.py final-ambiguous make demo-ambiguous
+.venv/bin/python -m orchestrator.cli demo ambiguous
+{
+  "run_id": "9d2fb905213e468dbd17a2016e0cfae9",
+  "scenario": "ambiguous",
+  "status": "PASSED",
+  "initially_blocked_without_approval": true,
+  "reasoning": "deterministic templates",
+  "approvals": "SIMULATED DEMO ONLY",
+  "workspace": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/9d2fb905213e468dbd17a2016e0cfae9/workspace",
+  "metrics": {
+    "run_id": "9d2fb905213e468dbd17a2016e0cfae9",
+    "status": "PASSED",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "observed_runs": 6,
+    "task_attempts": 10,
+    "task_attempt_success_rate": 1.0,
+    "retry_count": 0,
+    "retry_frequency": 0.0,
+    "rollback_count": 0,
+    "rollback_frequency": 0.0,
+    "gate_failures": {},
+    "per_task_latency_seconds": {
+      "intake": [
+        0.006672
+      ],
+      "clarification": [
+        0.007042
+      ],
+      "plan": [
+        0.00755
+      ],
+      "design": [
+        0.008294
+      ],
+      "implementation": [
+        0.059818
+      ],
+      "test_preparation": [
+        0.059556
+      ],
+      "validation": [
+        0.929315
+      ],
+      "security": [
+        0.477289
+      ],
+      "release": [
+        0.01132
+      ],
+      "summary": [
+        0.011728
+      ]
+    },
+    "end_to_end_seconds": 1.805117,
+    "mttr_seconds": null,
+    "repair_observations": 0,
+    "approval_wait_seconds": 0.163051,
+    "approval_wait_observations": 3,
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses."
+  },
+  "evidence": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/9d2fb905213e468dbd17a2016e0cfae9"
+}
+Evidence: runs/evidence/final-ambiguous-20261025T173348623056Z.json

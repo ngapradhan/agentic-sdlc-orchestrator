@@ -1,0 +1,9 @@
+{
+  "data": {
+    "approved_scope": "nosniff and no-referrer headers",
+    "decision": "SIMULATED explicit scope; SSO/HA/compliance excluded",
+    "questions_resolved_by_demo_defaults": true
+  },
+  "reasoning_mode": "deterministic-template",
+  "role": "planner"
+}

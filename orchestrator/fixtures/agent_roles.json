@@ -1,0 +1,5 @@
+{
+  "intake": {"intent": "Build or improve a locally runnable URL shortener", "risks": ["redirect abuse", "unauthorized management", "unverified scope"], "questions": ["What measurable availability and latency targets are required?", "Which identity provider and retention policy apply?", "Which security controls are in this release?"]},
+  "planner": {"strategy": "design approval, parallel file implementation and independent test preparation, synchronized validation, security checks, release approval", "out_of_scope": ["cloud deployment", "Redis", "frontend", "enterprise identity integration"]},
+  "design": {"stack": ["Python", "FastAPI", "SQLite", "SQLAlchemy", "Alembic"], "decisions": ["public redirects and owner-isolated management", "302 by default", "offline deterministic reasoning with real tools"]}
+}

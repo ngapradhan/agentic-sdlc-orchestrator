@@ -1,0 +1,134 @@
+{
+  "modules": [
+    {
+      "path": "shortener/__init__.py",
+      "sha256": "a4dabe05fc509a9ba2f91242306d3b0242e5952c50d2aa1841cfcdb9412e36e2",
+      "imports": [],
+      "functions": [],
+      "classes": [],
+      "routes": []
+    },
+    {
+      "path": "shortener/__main__.py",
+      "sha256": "e27ce6f6e18e85d3b65e3bf2d56a3c99be8bf03038a7a67b483d6408e2ad3f8d",
+      "imports": [
+        "import os",
+        "import secrets",
+        "from pathlib import Path",
+        "import uvicorn",
+        "from shortener.app import Settings, create_app"
+      ],
+      "functions": [
+        "main"
+      ],
+      "classes": [],
+      "routes": []
+    },
+    {
+      "path": "shortener/app.py",
+      "sha256": "78d9afc6058ea2eccf121f6c4942becd7e03c2daef86289fd8ed32a20fc3028f",
+      "imports": [
+        "from __future__ import annotations",
+        "import hashlib",
+        "import hmac",
+        "import ipaddress",
+        "import re",
+        "import secrets",
+        "import string",
+        "import time",
+        "from collections.abc import Callable, Iterator",
+        "from dataclasses import dataclass",
+        "from datetime import datetime",
+        "from urllib.parse import urlsplit",
+        "from fastapi import Depends, FastAPI, HTTPException, Request, Security",
+        "from fastapi.exceptions import RequestValidationError",
+        "from fastapi.responses import JSONResponse, RedirectResponse, Response",
+        "from fastapi.security import APIKeyHeader",
+        "from pydantic import BaseModel, ConfigDict, Field",
+        "from sqlalchemy import delete, text, update",
+        "from sqlalchemy.dialects.sqlite import insert",
+        "from sqlalchemy.exc import IntegrityError, SQLAlchemyError",
+        "from sqlalchemy.orm import Session",
+        "from shortener.database import connect, migrate",
+        "from shortener.models import Click, Link, RateWindow"
+      ],
+      "functions": [
+        "validate_destination",
+        "new_code",
+        "create_app",
+        "db",
+        "principal",
+        "validation_error",
+        "database_error",
+        "health",
+        "owned",
+        "create",
+        "stats",
+        "deactivate",
+        "resolve"
+      ],
+      "classes": [
+        "Settings",
+        "CreateLink",
+        "LinkView",
+        "StatsView"
+      ],
+      "routes": [
+        "app.exception_handler(RequestValidationError)",
+        "app.exception_handler(SQLAlchemyError)",
+        "app.get('/health')",
+        "app.post('/api/v1/urls', status_code=201, response_model=LinkView, responses={400: {'description': 'Invalid input'}, 401: {'description': 'Unauthorized'}, 409: {'description': 'Alias exists'}, 429: {'description': 'Rate limited'}})",
+        "app.get('/api/v1/urls/{short_code}/stats', response_model=StatsView)",
+        "app.delete('/api/v1/urls/{short_code}', status_code=204)",
+        "app.get('/{short_code}', response_class=RedirectResponse, responses={302: {'description': 'Redirect'}, 404: {'description': 'Missing'}, 410: {'description': 'Expired or deleted'}})"
+      ]
+    },
+    {
+      "path": "shortener/database.py",
+      "sha256": "499baa9955b191574a70dab16d94ae5a778de686bbe48ea6e68b0e3280c44327",
+      "imports": [
+        "from pathlib import Path",
+        "from typing import Any",
+        "from alembic.config import Config",
+        "from sqlalchemy import Engine, create_engine, event",
+        "from alembic import command"
+      ],
+      "functions": [
+        "migrate",
+        "connect",
+        "configure"
+      ],
+      "classes": [],
+      "routes": [
+        "event.listens_for(engine, 'connect')"
+      ]
+    },
+    {
+      "path": "shortener/models.py",
+      "sha256": "773174a5ab3bd9cba10feebea431d65f50cb4fc12cf5fab88c55f33847c5974e",
+      "imports": [
+        "from sqlalchemy import Boolean, Float, ForeignKey, Integer, String",
+        "from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column"
+      ],
+      "functions": [],
+      "classes": [
+        "Base",
+        "Link",
+        "Click",
+        "RateWindow"
+      ],
+      "routes": []
+    }
+  ],
+  "tests": [
+    "tests/test_service.py",
+    "tests/security/test_regressions.py"
+  ],
+  "impact": [
+    "shortener/app.py",
+    "shortener/reporting.py",
+    "tests/test_reporting.py"
+  ],
+  "database": "Existing links and clicks tables; no schema change required",
+  "change_plan": "Add authenticated owner-scoped daily reporting; preserve old tests"
+}

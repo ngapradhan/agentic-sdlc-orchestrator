@@ -1,0 +1,16 @@
+{
+  "stack": [
+    "Python",
+    "FastAPI",
+    "SQLite",
+    "SQLAlchemy",
+    "Alembic"
+  ],
+  "decisions": [
+    "public redirects and owner-isolated management",
+    "302 by default",
+    "offline deterministic reasoning with real tools"
+  ],
+  "mocked_reasoning": true,
+  "context_hash": "780d65245d8d21b79ed41d764e854650a3e3575a2a366e574ae3b7a6eda90777"
+}

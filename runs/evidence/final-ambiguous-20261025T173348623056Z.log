@@ -1,0 +1,63 @@
+.venv/bin/python -m orchestrator.cli demo ambiguous
+{
+  "run_id": "9d2fb905213e468dbd17a2016e0cfae9",
+  "scenario": "ambiguous",
+  "status": "PASSED",
+  "initially_blocked_without_approval": true,
+  "reasoning": "deterministic templates",
+  "approvals": "SIMULATED DEMO ONLY",
+  "workspace": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/9d2fb905213e468dbd17a2016e0cfae9/workspace",
+  "metrics": {
+    "run_id": "9d2fb905213e468dbd17a2016e0cfae9",
+    "status": "PASSED",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "observed_runs": 6,
+    "task_attempts": 10,
+    "task_attempt_success_rate": 1.0,
+    "retry_count": 0,
+    "retry_frequency": 0.0,
+    "rollback_count": 0,
+    "rollback_frequency": 0.0,
+    "gate_failures": {},
+    "per_task_latency_seconds": {
+      "intake": [
+        0.006672
+      ],
+      "clarification": [
+        0.007042
+      ],
+      "plan": [
+        0.00755
+      ],
+      "design": [
+        0.008294
+      ],
+      "implementation": [
+        0.059818
+      ],
+      "test_preparation": [
+        0.059556
+      ],
+      "validation": [
+        0.929315
+      ],
+      "security": [
+        0.477289
+      ],
+      "release": [
+        0.01132
+      ],
+      "summary": [
+        0.011728
+      ]
+    },
+    "end_to_end_seconds": 1.805117,
+    "mttr_seconds": null,
+    "repair_observations": 0,
+    "approval_wait_seconds": 0.163051,
+    "approval_wait_observations": 3,
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses."
+  },
+  "evidence": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/9d2fb905213e468dbd17a2016e0cfae9"
+}

@@ -1,0 +1,1 @@
+{"scope": "nosniff and no-referrer response headers plus regression tests", "assumptions": ["local single-tenant demonstration"], "excluded": ["SSO", "compliance certification", "HA deployment", "enterprise SLA"]}

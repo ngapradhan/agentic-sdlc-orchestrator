@@ -1,0 +1,16 @@
+{
+  "intent": "Build or improve a locally runnable URL shortener",
+  "risks": [
+    "redirect abuse",
+    "unauthorized management",
+    "unverified scope"
+  ],
+  "questions": [
+    "What measurable availability and latency targets are required?",
+    "Which identity provider and retention policy apply?",
+    "Which security controls are in this release?"
+  ],
+  "mocked_reasoning": true,
+  "context_hash": "fe61e7a3496ceace83be8f2bcdd6a694303db279528d7a187b2b4b0f82deac58",
+  "ambiguous": false
+}

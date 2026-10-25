@@ -1,0 +1,26 @@
+[
+  {
+    "decision": "approve",
+    "fingerprint": "e00cecc68055396811f9cb64311dd070d09ee7b8258af991ee6b7e10df4feb83",
+    "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+    "reviewer": "demo-reviewer-1",
+    "simulated": true,
+    "task_id": "design"
+  },
+  {
+    "decision": "approve",
+    "fingerprint": "e00cecc68055396811f9cb64311dd070d09ee7b8258af991ee6b7e10df4feb83",
+    "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+    "reviewer": "demo-reviewer-2",
+    "simulated": true,
+    "task_id": "design"
+  },
+  {
+    "decision": "approve",
+    "fingerprint": "761b2c6cb1c151889acdf6a1f19c4a27157ece603dc81c0a4d31ad76133503e0",
+    "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+    "reviewer": "demo-reviewer-1",
+    "simulated": true,
+    "task_id": "release"
+  }
+]

@@ -1,0 +1,1 @@
+{"http_smoke": "PASSED", "health": 200, "create": 201, "resolve": 302, "stats_clicks": 1, "delete": 204, "deleted_resolve": 410, "credential_permissions": "0600"}

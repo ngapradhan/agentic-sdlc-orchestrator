@@ -1,0 +1,21 @@
+name: bootstrap
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+      - run: uv python install ${{ matrix.python }}
+      - run: make setup PYTHON=${{ matrix.python }}
+      - run: make evidence
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: bootstrap-evidence-${{ matrix.python }}
+          path: runs/

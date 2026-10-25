@@ -1,0 +1,235 @@
+{
+  "run_id": "d418480bc7dc4fe6adfc3682b43d5ee1",
+  "scenario": "brownfield",
+  "status": "PASSED",
+  "initially_blocked_without_approval": true,
+  "reasoning": "deterministic templates",
+  "approvals": "SIMULATED DEMO ONLY",
+  "workspace": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/d418480bc7dc4fe6adfc3682b43d5ee1/workspace",
+  "metrics": {
+    "run_id": "d418480bc7dc4fe6adfc3682b43d5ee1",
+    "status": "PASSED",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "observed_runs": 2,
+    "task_attempts": 11,
+    "task_attempt_success_rate": 0.9090909090909091,
+    "retry_count": 1,
+    "retry_frequency": 0.09090909090909091,
+    "rollback_count": 1,
+    "rollback_frequency": 0.09090909090909091,
+    "gate_failures": {
+      "implementation.exit": 1
+    },
+    "per_task_latency_seconds": {
+      "intake": [
+        0.0087
+      ],
+      "codebase_reasoning": [
+        0.011154
+      ],
+      "plan": [
+        0.008157
+      ],
+      "design": [
+        0.008395
+      ],
+      "implementation": [
+        0.015467,
+        0.057676
+      ],
+      "test_preparation": [
+        0.058568
+      ],
+      "validation": [
+        1.068215
+      ],
+      "security": [
+        0.488864
+      ],
+      "release": [
+        0.011974
+      ],
+      "summary": [
+        0.013404
+      ]
+    },
+    "end_to_end_seconds": 2.116914,
+    "mttr_seconds": 0.144076,
+    "repair_observations": 1,
+    "approval_wait_seconds": 0.08720800000000001,
+    "approval_wait_observations": 2,
+    "limitations": "MTTR null without repair observations. Demo decisions are labeled; waits are actual elapsed time. Latency includes pauses."
+  },
+  "evidence": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/d418480bc7dc4fe6adfc3682b43d5ee1",
+  "tasks": [
+    {
+      "id": "intake",
+      "role": "intake",
+      "deps": [],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "requirements.json"
+      ],
+      "config": {
+        "requirement": "Add owner-protected daily click reporting to the existing URL shortener.",
+        "ambiguous": false
+      },
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "codebase_reasoning",
+      "role": "codebase_reasoner",
+      "deps": [
+        "intake"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "impact-analysis.json"
+      ],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "plan",
+      "role": "planner",
+      "deps": [
+        "codebase_reasoning"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "plan.json"
+      ],
+      "config": {
+        "scope": "Add owner-protected daily click reporting to the existing URL shortener."
+      },
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "design",
+      "role": "design",
+      "deps": [
+        "plan"
+      ],
+      "risk": "high",
+      "max_attempts": 2,
+      "writes": [
+        "design.json"
+      ],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "implementation",
+      "role": "implementer",
+      "deps": [
+        "design"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "shortener/app.py",
+        "shortener/reporting.py",
+        "change.diff"
+      ],
+      "config": {
+        "scenario": "brownfield"
+      },
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "test_preparation",
+      "role": "test_author",
+      "deps": [
+        "design"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "tests/test_service.py",
+        "tests/security/test_regressions.py",
+        "tests/test_reporting.py"
+      ],
+      "config": {
+        "scenario": "brownfield"
+      },
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "validation",
+      "role": "validator",
+      "deps": [
+        "implementation",
+        "test_preparation"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "security",
+      "role": "security",
+      "deps": [
+        "validation"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "release",
+      "role": "release",
+      "deps": [
+        "security"
+      ],
+      "risk": "release",
+      "max_attempts": 2,
+      "writes": [
+        "release-review.json"
+      ],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    },
+    {
+      "id": "summary",
+      "role": "documenter",
+      "deps": [
+        "release"
+      ],
+      "risk": "low",
+      "max_attempts": 2,
+      "writes": [
+        "engineering-summary.json"
+      ],
+      "config": {},
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation"
+    }
+  ]
+}

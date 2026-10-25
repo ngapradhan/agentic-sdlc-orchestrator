@@ -1,0 +1,267 @@
+uv sync --frozen --extra dev --python /Users/ayush/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3
+.venv/bin/python scripts/demo.py
+{"created_run_id": "4b95357e49824f0998997e6ba17c9b56", "mode": "MockLLM fixtures; no live reasoning"}
+{
+  "dag": {
+    "edges": [
+      [
+        "intake",
+        "plan"
+      ],
+      [
+        "plan",
+        "summary"
+      ]
+    ],
+    "nodes": [
+      "intake",
+      "plan",
+      "summary"
+    ],
+    "scope": "S0 bootstrap only",
+    "version": 1
+  },
+  "nodes": [
+    {
+      "artifact_hash": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1",
+      "attempts": 1,
+      "id": "intake",
+      "input_hashes": {
+        "requirement": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"
+      },
+      "status": "PASSED"
+    },
+    {
+      "artifact_hash": null,
+      "attempts": 0,
+      "id": "plan",
+      "input_hashes": {},
+      "status": "PENDING"
+    },
+    {
+      "artifact_hash": null,
+      "attempts": 0,
+      "id": "summary",
+      "input_hashes": {},
+      "status": "PENDING"
+    }
+  ],
+  "requirement_hash": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2",
+  "run_id": "4b95357e49824f0998997e6ba17c9b56",
+  "status": "HALTED"
+}
+{
+  "dag": {
+    "edges": [
+      [
+        "intake",
+        "plan"
+      ],
+      [
+        "plan",
+        "summary"
+      ]
+    ],
+    "nodes": [
+      "intake",
+      "plan",
+      "summary"
+    ],
+    "scope": "S0 bootstrap only",
+    "version": 1
+  },
+  "nodes": [
+    {
+      "artifact_hash": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1",
+      "attempts": 1,
+      "id": "intake",
+      "input_hashes": {
+        "requirement": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"
+      },
+      "status": "PASSED"
+    },
+    {
+      "artifact_hash": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5",
+      "attempts": 1,
+      "id": "plan",
+      "input_hashes": {
+        "intake": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1"
+      },
+      "status": "PASSED"
+    },
+    {
+      "artifact_hash": "dffabdf8ad8f0175a6b53bb88c17fab5b7713c31ef48b8e167721ce3d67b4a41",
+      "attempts": 1,
+      "id": "summary",
+      "input_hashes": {
+        "plan": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5"
+      },
+      "status": "PASSED"
+    }
+  ],
+  "requirement_hash": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2",
+  "run_id": "4b95357e49824f0998997e6ba17c9b56",
+  "status": "PASSED"
+}
+flowchart LR
+  intake --> plan
+  plan --> summary
+{
+  "lineage": [
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "d88f55ac7b444d17b27a49e64dd632d0",
+      "event_type": "RUN_CREATED",
+      "parent_event_id": null,
+      "payload": {
+        "requirement_hash": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"
+      },
+      "rationale": "User requested bootstrap; raw input is deliberately not persisted",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.726899+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "a16b4a54308c46498f481ff261c9c6d6",
+      "event_type": "RUN_STARTED",
+      "parent_event_id": "d88f55ac7b444d17b27a49e64dd632d0",
+      "payload": {},
+      "rationale": "Execute pending bootstrap nodes",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.733739+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "75856d6c32454424842cca44b7e2d035",
+      "event_type": "NODE_STARTED",
+      "parent_event_id": "a16b4a54308c46498f481ff261c9c6d6",
+      "payload": {
+        "inputs": {
+          "requirement": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"
+        },
+        "node": "intake"
+      },
+      "rationale": "Entry gate passed: all dependencies committed and validated",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.735572+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "8e9f4139fdf243ba86e0463b54c08e24",
+      "event_type": "GATE_PASSED",
+      "parent_event_id": "75856d6c32454424842cca44b7e2d035",
+      "payload": {
+        "artifact_hash": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1",
+        "evidence": "intake.json",
+        "gate": "intake.exit",
+        "input_hashes": {
+          "requirement": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"
+        },
+        "node": "intake"
+      },
+      "rationale": "Draft 2020-12 JSON Schema validated; fixture content only",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.741720+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "78246cc0ab0d4837b44b5e69b5b6fb2d",
+      "event_type": "RUN_PAUSED",
+      "parent_event_id": "8e9f4139fdf243ba86e0463b54c08e24",
+      "payload": {},
+      "rationale": "Requested S0 pause point",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.751367+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "e54c74e1b1584dfd82770737cd4e7f2a",
+      "event_type": "RUN_STARTED",
+      "parent_event_id": "78246cc0ab0d4837b44b5e69b5b6fb2d",
+      "payload": {},
+      "rationale": "Execute pending bootstrap nodes",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.925965+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "0aa0bda1901b456fb1b49f00eb7de372",
+      "event_type": "NODE_STARTED",
+      "parent_event_id": "e54c74e1b1584dfd82770737cd4e7f2a",
+      "payload": {
+        "inputs": {
+          "intake": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1"
+        },
+        "node": "plan"
+      },
+      "rationale": "Entry gate passed: all dependencies committed and validated",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.928655+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "b1f76a734622418da071666f0453b401",
+      "event_type": "GATE_PASSED",
+      "parent_event_id": "0aa0bda1901b456fb1b49f00eb7de372",
+      "payload": {
+        "artifact_hash": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5",
+        "evidence": "plan.json",
+        "gate": "plan.exit",
+        "input_hashes": {
+          "intake": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1"
+        },
+        "node": "plan"
+      },
+      "rationale": "Draft 2020-12 JSON Schema validated; fixture content only",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.935149+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "76090c61231e4b3a8f6dda7ab6cd2a99",
+      "event_type": "NODE_STARTED",
+      "parent_event_id": "b1f76a734622418da071666f0453b401",
+      "payload": {
+        "inputs": {
+          "plan": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5"
+        },
+        "node": "summary"
+      },
+      "rationale": "Entry gate passed: all dependencies committed and validated",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.939893+00:00"
+    },
+    {
+      "actor": "bootstrap-engine",
+      "event_id": "d84397dcc3c542d1a5f86524b48a9638",
+      "event_type": "GATE_PASSED",
+      "parent_event_id": "76090c61231e4b3a8f6dda7ab6cd2a99",
+      "payload": {
+        "artifact_hash": "dffabdf8ad8f0175a6b53bb88c17fab5b7713c31ef48b8e167721ce3d67b4a41",
+        "evidence": "summary.json",
+        "gate": "summary.exit",
+        "input_hashes": {
+          "plan": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5"
+        },
+        "node": "summary"
+      },
+      "rationale": "Draft 2020-12 JSON Schema validated; fixture content only",
+      "run_id": "4b95357e49824f0998997e6ba17c9b56",
+      "timestamp": "2026-10-25T07:45:57.951200+00:00"
+    }
+  ],
+  "node": "summary"
+}
+d88f55ac7b444d17b27a49e64dd632d0 RUN_CREATED {"requirement_hash": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"}
+a16b4a54308c46498f481ff261c9c6d6 RUN_STARTED {}
+75856d6c32454424842cca44b7e2d035 NODE_STARTED {"node": "intake", "inputs": {"requirement": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"}}
+8e9f4139fdf243ba86e0463b54c08e24 GATE_PASSED {"node": "intake", "gate": "intake.exit", "artifact_hash": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1", "input_hashes": {"requirement": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"}, "evidence": "intake.json"}
+78246cc0ab0d4837b44b5e69b5b6fb2d RUN_PAUSED {}
+e54c74e1b1584dfd82770737cd4e7f2a RUN_STARTED {}
+0aa0bda1901b456fb1b49f00eb7de372 NODE_STARTED {"node": "plan", "inputs": {"intake": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1"}}
+b1f76a734622418da071666f0453b401 GATE_PASSED {"node": "plan", "gate": "plan.exit", "artifact_hash": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5", "input_hashes": {"intake": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1"}, "evidence": "plan.json"}
+76090c61231e4b3a8f6dda7ab6cd2a99 NODE_STARTED {"node": "summary", "inputs": {"plan": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5"}}
+d84397dcc3c542d1a5f86524b48a9638 GATE_PASSED {"node": "summary", "gate": "summary.exit", "artifact_hash": "dffabdf8ad8f0175a6b53bb88c17fab5b7713c31ef48b8e167721ce3d67b4a41", "input_hashes": {"plan": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5"}, "evidence": "summary.json"}
+5427fb19b10f48b48ec274e6f08a7736 RUN_PASSED {}
+S0 only: three schema gates passed; run artifacts: runs/4b95357e49824f0998997e6ba17c9b56
+Checked 27 packages in 5ms

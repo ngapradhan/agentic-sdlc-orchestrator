@@ -1,0 +1,9 @@
+{
+  "limitations": [
+    "No service code generated in S0",
+    "No human approval or full SDLC claim",
+    "No live model reasoning"
+  ],
+  "mode": "mock-fixture",
+  "result": "Bootstrap fixture produced. Consult audit events for actual execution status."
+}

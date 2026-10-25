@@ -1,0 +1,168 @@
+{
+  "commands": {
+    "final-checks": {
+      "record": "runs/evidence/final-checks-20261025T173330172670Z.json",
+      "command": [
+        "make",
+        "check"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-checks-20261025T173330172670Z.log"
+    },
+    "final-security": {
+      "record": "runs/evidence/final-security-20261025T173342905795Z.json",
+      "command": [
+        "make",
+        "security"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-security-20261025T173342905795Z.log"
+    },
+    "final-contract": {
+      "record": "runs/evidence/final-contract-20261025T173343427183Z.json",
+      "command": [
+        "make",
+        "contract"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-contract-20261025T173343427183Z.log"
+    },
+    "final-http": {
+      "record": "runs/evidence/final-http-20261025T173343877671Z.json",
+      "command": [
+        "make",
+        "smoke"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-http-20261025T173343877671Z.log"
+    },
+    "final-greenfield": {
+      "record": "runs/evidence/final-greenfield-20261025T173344470901Z.json",
+      "command": [
+        "make",
+        "demo-greenfield"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-greenfield-20261025T173344470901Z.log"
+    },
+    "final-brownfield": {
+      "record": "runs/evidence/final-brownfield-20261025T173346379631Z.json",
+      "command": [
+        "make",
+        "demo-brownfield"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-brownfield-20261025T173346379631Z.log"
+    },
+    "final-ambiguous": {
+      "record": "runs/evidence/final-ambiguous-20261025T173348623056Z.json",
+      "command": [
+        "make",
+        "demo-ambiguous"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-ambiguous-20261025T173348623056Z.log"
+    },
+    "final-collect": {
+      "record": "runs/evidence/final-collect-20261025T173355336814Z.json",
+      "command": [
+        ".venv/bin/python",
+        "scripts/collect_submission.py"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-collect-20261025T173355336814Z.log"
+    },
+    "final-acceptance": {
+      "record": "runs/evidence/final-acceptance-20261025T173459281702Z.json",
+      "command": [
+        ".venv/bin/python",
+        "scripts/acceptance.py"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-acceptance-20261025T173459281702Z.log"
+    },
+    "final-clean-quickstart": {
+      "record": "runs/evidence/final-clean-quickstart-20261025T173615915218Z.json",
+      "command": [
+        "make",
+        "-C",
+        "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/work/v3-clean-clone",
+        "quickstart",
+        "PYTHON=/Users/ayush/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+        "UV_CACHE_DIR=/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/work/uv-cache"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-clean-quickstart-20261025T173615915218Z.log"
+    },
+    "final-clean-checks": {
+      "record": "runs/evidence/final-clean-checks-20261025T173622947036Z.json",
+      "command": [
+        "make",
+        "-C",
+        "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/work/v3-clean-clone",
+        "check"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-clean-checks-20261025T173622947036Z.log"
+    },
+    "final-clean-acceptance": {
+      "record": "runs/evidence/final-clean-acceptance-20261025T173820258908Z.json",
+      "command": [
+        "uv",
+        "--cache-dir",
+        "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/work/uv-cache",
+        "--directory",
+        "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/work/v3-clean-clone",
+        "run",
+        "--no-sync",
+        "python",
+        "scripts/acceptance.py"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-clean-acceptance-20261025T173820258908Z.log"
+    },
+    "final-packaging-lint": {
+      "record": "runs/evidence/final-packaging-lint-20261025T173820468200Z.json",
+      "command": [
+        "make",
+        "lint"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-packaging-lint-20261025T173820468200Z.log"
+    },
+    "final-dependencies": {
+      "record": "runs/evidence/final-dependencies-20261025T173553221836Z.json",
+      "command": [
+        "uv",
+        "--cache-dir",
+        "work/uv-cache",
+        "pip",
+        "check",
+        "--python",
+        ".venv/bin/python"
+      ],
+      "exit_code": 0,
+      "output": "runs/evidence/final-dependencies-20261025T173553221836Z.log"
+    }
+  },
+  "scenarios": {
+    "greenfield": {
+      "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+      "status": "PASSED",
+      "path": "runs/evidence/scenarios/greenfield-6141a2eb87ec4264b377c1b2a7bcf92d"
+    },
+    "brownfield": {
+      "run_id": "96f54d1628184a3190a1ced4da1c6382",
+      "status": "PASSED",
+      "path": "runs/evidence/scenarios/brownfield-96f54d1628184a3190a1ced4da1c6382"
+    },
+    "ambiguous": {
+      "run_id": "9d2fb905213e468dbd17a2016e0cfae9",
+      "status": "PASSED",
+      "path": "runs/evidence/scenarios/ambiguous-9d2fb905213e468dbd17a2016e0cfae9"
+    }
+  },
+  "requirement_mapping": "runs/evidence/requirement-coverage.json",
+  "coverage_percent": 93.14814814814815,
+  "scope": "Verified local prototype; deterministic reasoning, simulated demo approvals; see limitations"
+}

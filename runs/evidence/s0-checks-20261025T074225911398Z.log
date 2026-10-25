@@ -1,0 +1,34 @@
+.venv/bin/ruff check .
+All checks passed!
+.venv/bin/ruff format --check .
+10 files already formatted
+.venv/bin/mypy orchestrator
+Success: no issues found in 6 source files
+.venv/bin/python -m pytest --cov=orchestrator --cov-report=term-missing --cov-report=json:runs/evidence/coverage.json --cov-report=html:runs/evidence/htmlcov
+============================= test session starts ==============================
+platform darwin -- Python 3.12.14, pytest-9.1.1, pluggy-1.7.0
+rootdir: /Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener
+configfile: pyproject.toml
+testpaths: tests
+plugins: cov-7.1.0, anyio-4.15.1
+collected 26 items
+
+tests/test_bootstrap.py ..........................                       [100%]
+
+================================ tests coverage ================================
+______________ coverage: platform darwin, python 3.12.14-final-0 _______________
+
+Name                         Stmts   Miss Branch BrPart  Cover   Missing
+------------------------------------------------------------------------
+orchestrator/__init__.py         0      0      0      0   100%
+orchestrator/cli.py             73      5     30      3    92%   46-53, 55, 99
+orchestrator/engine.py         136      1     46      1    99%   108
+orchestrator/llm.py             30      0      8      0   100%
+orchestrator/store.py          108      0     16      0   100%
+orchestrator/validation.py      28      0     12      0   100%
+------------------------------------------------------------------------
+TOTAL                          375      6    112      4    98%
+Coverage HTML written to dir runs/evidence/htmlcov
+Coverage JSON written to file runs/evidence/coverage.json
+Required test coverage of 80.0% reached. Total coverage: 97.95%
+============================== 26 passed in 3.59s ==============================

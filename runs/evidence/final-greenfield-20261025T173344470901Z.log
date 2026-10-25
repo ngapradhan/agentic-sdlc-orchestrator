@@ -1,0 +1,60 @@
+.venv/bin/python -m orchestrator.cli demo greenfield
+{
+  "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+  "scenario": "greenfield",
+  "status": "PASSED",
+  "initially_blocked_without_approval": true,
+  "reasoning": "deterministic templates",
+  "approvals": "SIMULATED DEMO ONLY",
+  "workspace": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/6141a2eb87ec4264b377c1b2a7bcf92d/workspace",
+  "metrics": {
+    "run_id": "6141a2eb87ec4264b377c1b2a7bcf92d",
+    "status": "PASSED",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "observed_runs": 4,
+    "task_attempts": 9,
+    "task_attempt_success_rate": 1.0,
+    "retry_count": 0,
+    "retry_frequency": 0.0,
+    "rollback_count": 0,
+    "rollback_frequency": 0.0,
+    "gate_failures": {},
+    "per_task_latency_seconds": {
+      "intake": [
+        0.006771
+      ],
+      "plan": [
+        0.007241
+      ],
+      "design": [
+        0.007706
+      ],
+      "test_preparation": [
+        0.05476
+      ],
+      "implementation": [
+        0.058935
+      ],
+      "validation": [
+        0.914708
+      ],
+      "security": [
+        0.4658
+      ],
+      "release": [
+        0.010542
+      ],
+      "summary": [
+        0.011209
+      ]
+    },
+    "end_to_end_seconds": 1.668232,
+    "mttr_seconds": null,
+    "repair_observations": 0,
+    "approval_wait_seconds": 0.085176,
+    "approval_wait_observations": 2,
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses."
+  },
+  "evidence": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/6141a2eb87ec4264b377c1b2a7bcf92d"
+}

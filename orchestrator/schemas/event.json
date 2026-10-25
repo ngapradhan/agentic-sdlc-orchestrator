@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "event",
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "run_id": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "actor": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_type": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z_]+$"
+    },
+    "payload": {
+      "type": "object"
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parent_event_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{32}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "required": [
+    "event_id",
+    "run_id",
+    "timestamp",
+    "actor",
+    "event_type",
+    "payload",
+    "rationale",
+    "parent_event_id"
+  ]
+}

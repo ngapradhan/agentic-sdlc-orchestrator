@@ -1,0 +1,12 @@
+{
+  "data": {
+    "dependencies": [
+      "release"
+    ],
+    "mocked": "Reasoning templates; approval records explicitly label demo decisions",
+    "real": "File writes, commands, tests, database state and gates",
+    "release": "Ready for local prototype review only"
+  },
+  "reasoning_mode": "real-tool-output",
+  "role": "documenter"
+}

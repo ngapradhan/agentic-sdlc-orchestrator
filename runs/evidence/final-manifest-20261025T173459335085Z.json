@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "scripts/build_manifest.py"
+  ],
+  "cwd": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener",
+  "started": "2026-10-25T17:34:59.335085+00:00",
+  "finished": "2026-10-25T17:34:59.354419+00:00",
+  "exit_code": 0,
+  "output_path": "runs/evidence/final-manifest-20261025T173459335085Z.log",
+  "output_excerpt": "{\"indexed_commands\": 9, \"mapped_requirements\": 31, \"all_evidence_paths_exist\": true}\n"
+}

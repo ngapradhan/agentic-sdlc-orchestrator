@@ -1,0 +1,216 @@
+{
+  "edges": [
+    [
+      "intake",
+      "codebase_reasoning"
+    ],
+    [
+      "codebase_reasoning",
+      "plan"
+    ],
+    [
+      "plan",
+      "design"
+    ],
+    [
+      "design",
+      "implementation"
+    ],
+    [
+      "design",
+      "test_preparation"
+    ],
+    [
+      "implementation",
+      "validation"
+    ],
+    [
+      "test_preparation",
+      "validation"
+    ],
+    [
+      "validation",
+      "security"
+    ],
+    [
+      "security",
+      "release"
+    ],
+    [
+      "release",
+      "summary"
+    ]
+  ],
+  "nodes": [
+    {
+      "config": {
+        "ambiguous": false,
+        "requirement": "Add owner-protected daily click reporting to the existing URL shortener."
+      },
+      "deps": [],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "intake",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "intake",
+      "writes": [
+        "requirements.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "intake"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "codebase_reasoning",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "codebase_reasoner",
+      "writes": [
+        "impact-analysis.json"
+      ]
+    },
+    {
+      "config": {
+        "scope": "Add owner-protected daily click reporting to the existing URL shortener."
+      },
+      "deps": [
+        "codebase_reasoning"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "plan",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "planner",
+      "writes": [
+        "plan.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "plan"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "design",
+      "max_attempts": 2,
+      "risk": "high",
+      "role": "design",
+      "writes": [
+        "design.json"
+      ]
+    },
+    {
+      "config": {
+        "scenario": "brownfield"
+      },
+      "deps": [
+        "design"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "implementation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "implementer",
+      "writes": [
+        "shortener/app.py",
+        "shortener/reporting.py",
+        "change.diff"
+      ]
+    },
+    {
+      "config": {
+        "scenario": "brownfield"
+      },
+      "deps": [
+        "design"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "test_preparation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "test_author",
+      "writes": [
+        "tests/test_service.py",
+        "tests/security/test_regressions.py",
+        "tests/test_reporting.py"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "implementation",
+        "test_preparation"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "validation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "validator",
+      "writes": []
+    },
+    {
+      "config": {},
+      "deps": [
+        "validation"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "security",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "security",
+      "writes": []
+    },
+    {
+      "config": {},
+      "deps": [
+        "security"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "release",
+      "max_attempts": 2,
+      "risk": "release",
+      "role": "release",
+      "writes": [
+        "release-review.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "release"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "summary",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "documenter",
+      "writes": [
+        "engineering-summary.json"
+      ]
+    }
+  ],
+  "scenario": "brownfield",
+  "version": 2
+}

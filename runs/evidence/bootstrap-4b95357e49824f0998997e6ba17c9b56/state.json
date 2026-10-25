@@ -1,0 +1,53 @@
+{
+  "dag": {
+    "edges": [
+      [
+        "intake",
+        "plan"
+      ],
+      [
+        "plan",
+        "summary"
+      ]
+    ],
+    "nodes": [
+      "intake",
+      "plan",
+      "summary"
+    ],
+    "scope": "S0 bootstrap only",
+    "version": 1
+  },
+  "nodes": [
+    {
+      "artifact_hash": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1",
+      "attempts": 1,
+      "id": "intake",
+      "input_hashes": {
+        "requirement": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2"
+      },
+      "status": "PASSED"
+    },
+    {
+      "artifact_hash": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5",
+      "attempts": 1,
+      "id": "plan",
+      "input_hashes": {
+        "intake": "794e7d43ae3a5ad157e6d8383c663d59a734ad1ee28a74ac57296c18f18249d1"
+      },
+      "status": "PASSED"
+    },
+    {
+      "artifact_hash": "dffabdf8ad8f0175a6b53bb88c17fab5b7713c31ef48b8e167721ce3d67b4a41",
+      "attempts": 1,
+      "id": "summary",
+      "input_hashes": {
+        "plan": "61bf924e15510f8406ddaa6742a86cbf3e109a0603b6af1fca16eda001991da5"
+      },
+      "status": "PASSED"
+    }
+  ],
+  "requirement_hash": "f51797726d168b10d2a0351d15cd0e00260a2a73e51d52e548efafeaf7fba0b2",
+  "run_id": "4b95357e49824f0998997e6ba17c9b56",
+  "status": "PASSED"
+}

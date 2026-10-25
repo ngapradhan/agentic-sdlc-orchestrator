@@ -1,0 +1,26 @@
+version: 2
+network:
+  default: deny
+  enforcement: no_network_tools_or_live_adapter_in_demo
+paths:
+  writable: run_workspace_only
+  deny: [.git, .env, .venv, parent_traversal, symlink_escape]
+commands:
+  python_modules: [pytest, ruff, mypy, alembic]
+budgets:
+  max_workers: 2
+  max_attempts: 3
+  command_seconds: 60
+  run_seconds: 240
+approvals:
+  medium: 1
+  high: 2
+  release: 1
+change_control:
+  reject_blocks_execution: true
+  destructive_outside_workspace: deny
+  demo_approvals_must_be_labeled: true
+secrets:
+  environment_inheritance: deny_except_runtime_paths
+  credentials_in_artifacts: deny
+  live_credentials_source: environment_only

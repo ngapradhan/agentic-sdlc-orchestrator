@@ -1,0 +1,9 @@
+{
+  "mode": "mock-fixture",
+  "tasks": [
+    "Validate intake fixture",
+    "Persist a plan fixture",
+    "Validate summary fixture"
+  ],
+  "scope": "S0 infrastructure only"
+}

@@ -1,0 +1,20 @@
+{
+  "data": {
+    "ambiguous": true,
+    "context_hash": "bc477540ea96d318d50eff969d718d80af0d77eddc712a44e7e81a6d5d9ec336",
+    "intent": "Build or improve a locally runnable URL shortener",
+    "mocked_reasoning": true,
+    "questions": [
+      "What measurable availability and latency targets are required?",
+      "Which identity provider and retention policy apply?",
+      "Which security controls are in this release?"
+    ],
+    "risks": [
+      "redirect abuse",
+      "unauthorized management",
+      "unverified scope"
+    ]
+  },
+  "reasoning_mode": "deterministic-template",
+  "role": "intake"
+}

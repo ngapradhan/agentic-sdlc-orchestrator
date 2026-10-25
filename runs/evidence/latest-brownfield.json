@@ -1,0 +1,235 @@
+{
+  "approvals": "SIMULATED DEMO ONLY",
+  "evidence": "/Users/ayush/Desktop/schwab-verification/agentic-url-shortener/runs/f709fa0f917f4456b5beaf3e934686d6",
+  "initially_blocked_without_approval": true,
+  "metrics": {
+    "approval_wait_observations": 2,
+    "approval_wait_seconds": 0.094105,
+    "end_to_end_seconds": 1.89343,
+    "gate_failures": {
+      "implementation.exit": 1
+    },
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses.",
+    "mttr_seconds": 0.145543,
+    "observed_runs": 3,
+    "per_task_latency_seconds": {
+      "codebase_reasoning": [
+        0.01135
+      ],
+      "design": [
+        0.007977
+      ],
+      "implementation": [
+        0.013093,
+        0.05771
+      ],
+      "intake": [
+        0.006106
+      ],
+      "plan": [
+        0.007518
+      ],
+      "release": [
+        0.010932
+      ],
+      "security": [
+        0.41848
+      ],
+      "summary": [
+        0.012809
+      ],
+      "test_preparation": [
+        0.058132
+      ],
+      "validation": [
+        0.919753
+      ]
+    },
+    "repair_observations": 1,
+    "retry_count": 1,
+    "retry_frequency": 0.09090909090909091,
+    "rollback_count": 1,
+    "rollback_frequency": 0.09090909090909091,
+    "run_id": "f709fa0f917f4456b5beaf3e934686d6",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "status": "PASSED",
+    "task_attempt_success_rate": 0.9090909090909091,
+    "task_attempts": 11
+  },
+  "reasoning": "deterministic templates",
+  "run_id": "f709fa0f917f4456b5beaf3e934686d6",
+  "scenario": "brownfield",
+  "status": "PASSED",
+  "tasks": [
+    {
+      "config": {
+        "ambiguous": false,
+        "requirement": "Add owner-protected daily click reporting to the existing URL shortener."
+      },
+      "deps": [],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "intake",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "intake",
+      "writes": [
+        "requirements.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "intake"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "codebase_reasoning",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "codebase_reasoner",
+      "writes": [
+        "impact-analysis.json"
+      ]
+    },
+    {
+      "config": {
+        "scope": "Add owner-protected daily click reporting to the existing URL shortener."
+      },
+      "deps": [
+        "codebase_reasoning"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "plan",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "planner",
+      "writes": [
+        "plan.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "plan"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "design",
+      "max_attempts": 2,
+      "risk": "high",
+      "role": "design",
+      "writes": [
+        "design.json"
+      ]
+    },
+    {
+      "config": {
+        "scenario": "brownfield"
+      },
+      "deps": [
+        "design"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "implementation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "implementer",
+      "writes": [
+        "shortener/app.py",
+        "shortener/reporting.py",
+        "change.diff"
+      ]
+    },
+    {
+      "config": {
+        "scenario": "brownfield"
+      },
+      "deps": [
+        "design"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "test_preparation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "test_author",
+      "writes": [
+        "tests/test_service.py",
+        "tests/security/test_regressions.py",
+        "tests/test_reporting.py"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "implementation",
+        "test_preparation"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "validation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "validator",
+      "writes": []
+    },
+    {
+      "config": {},
+      "deps": [
+        "validation"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "security",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "security",
+      "writes": []
+    },
+    {
+      "config": {},
+      "deps": [
+        "security"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "release",
+      "max_attempts": 2,
+      "risk": "release",
+      "role": "release",
+      "writes": [
+        "release-review.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "release"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "summary",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "documenter",
+      "writes": [
+        "engineering-summary.json"
+      ]
+    }
+  ],
+  "workspace": "/Users/ayush/Desktop/schwab-verification/agentic-url-shortener/runs/f709fa0f917f4456b5beaf3e934686d6/workspace"
+}

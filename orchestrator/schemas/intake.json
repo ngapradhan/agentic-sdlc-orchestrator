@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "intake",
+  "properties": {
+    "mode": {
+      "const": "mock-fixture"
+    },
+    "normalized_requirement": {
+      "type": "string",
+      "minLength": 1
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "mode",
+    "normalized_requirement",
+    "assumptions"
+  ]
+}

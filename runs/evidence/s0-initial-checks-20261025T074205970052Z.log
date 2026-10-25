@@ -1,0 +1,10 @@
+.venv/bin/ruff check .
+All checks passed!
+.venv/bin/ruff format --check .
+10 files already formatted
+.venv/bin/mypy orchestrator
+orchestrator/engine.py:97: error: Incompatible types in assignment (expression has type "Node | None", variable has type "Node")  [assignment]
+orchestrator/engine.py:134: error: Incompatible types in assignment (expression has type "Node | None", variable has type "Node")  [assignment]
+orchestrator/engine.py:155: error: Incompatible types in assignment (expression has type "Node | None", variable has type "Node")  [assignment]
+Found 3 errors in 1 file (checked 6 source files)
+make: *** [typecheck] Error 1

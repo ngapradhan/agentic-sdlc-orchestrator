@@ -1,0 +1,12 @@
+{
+  "command": [
+    ".venv/bin/python",
+    "scripts/acceptance.py"
+  ],
+  "cwd": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener",
+  "started": "2026-10-25T17:34:59.281702+00:00",
+  "finished": "2026-10-25T17:34:59.314975+00:00",
+  "exit_code": 0,
+  "output_path": "runs/evidence/final-acceptance-20261025T173459281702Z.log",
+  "output_excerpt": "{\"acceptance_evidence\": \"PASSED\", \"scenarios\": 3, \"file_hashes_verified\": 114, \"coverage\": 93.15, \"scope\": \"Local prototype; see limitations, no human release sign-off claimed\"}\n"
+}

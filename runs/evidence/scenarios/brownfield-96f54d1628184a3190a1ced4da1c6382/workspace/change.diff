@@ -1,0 +1,15 @@
+--- baseline/shortener/app.py
++++ enhanced/shortener/app.py
+@@ -275,4 +275,12 @@
+             headers={"Cache-Control": "no-store" if status == 302 else "public, max-age=60"},
+         )
+ 
++
++    @app.get("/api/v1/urls/{short_code}/report")
++    def report(short_code: str, session: Session = Depends(db),
++               owner: str = Depends(principal)) -> dict[str, object]:
++        from shortener.reporting import daily_report
++        owned(session, short_code, owner)
++        return daily_report(session, short_code)
++
+     return app

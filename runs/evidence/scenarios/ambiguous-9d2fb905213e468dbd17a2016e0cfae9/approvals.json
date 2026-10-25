@@ -1,0 +1,42 @@
+[
+  {
+    "decision": "approve",
+    "fingerprint": "571a31fb2c25909b24a12fabd7073c9b756a33ba9a467afc378dfe13f34b148c",
+    "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+    "reviewer": "demo-reviewer-1",
+    "simulated": true,
+    "task_id": "clarification"
+  },
+  {
+    "decision": "approve",
+    "fingerprint": "571a31fb2c25909b24a12fabd7073c9b756a33ba9a467afc378dfe13f34b148c",
+    "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+    "reviewer": "demo-reviewer-2",
+    "simulated": true,
+    "task_id": "clarification"
+  },
+  {
+    "decision": "approve",
+    "fingerprint": "dc2b687102632aab2c6839cbcbe512b43a59e363a41b1a074ef2f7d59d209ade",
+    "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+    "reviewer": "demo-reviewer-1",
+    "simulated": true,
+    "task_id": "design"
+  },
+  {
+    "decision": "approve",
+    "fingerprint": "dc2b687102632aab2c6839cbcbe512b43a59e363a41b1a074ef2f7d59d209ade",
+    "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+    "reviewer": "demo-reviewer-2",
+    "simulated": true,
+    "task_id": "design"
+  },
+  {
+    "decision": "approve",
+    "fingerprint": "11d3ff9ed3bbf96ecc9d0d886434f04e1d2eb83a0260198434ad5a7d51e95f03",
+    "note": "SIMULATED DEMO DECISION: approve isolated prototype scope only",
+    "reviewer": "demo-reviewer-1",
+    "simulated": true,
+    "task_id": "release"
+  }
+]

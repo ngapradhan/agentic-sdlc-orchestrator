@@ -1,0 +1,233 @@
+{
+  "approvals": "SIMULATED DEMO ONLY",
+  "evidence": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/9d2fb905213e468dbd17a2016e0cfae9",
+  "initially_blocked_without_approval": true,
+  "metrics": {
+    "approval_wait_observations": 3,
+    "approval_wait_seconds": 0.163051,
+    "end_to_end_seconds": 1.805117,
+    "gate_failures": {},
+    "limitations": "MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses.",
+    "mttr_seconds": null,
+    "observed_runs": 6,
+    "per_task_latency_seconds": {
+      "clarification": [
+        0.007042
+      ],
+      "design": [
+        0.008294
+      ],
+      "implementation": [
+        0.059818
+      ],
+      "intake": [
+        0.006672
+      ],
+      "plan": [
+        0.00755
+      ],
+      "release": [
+        0.01132
+      ],
+      "security": [
+        0.477289
+      ],
+      "summary": [
+        0.011728
+      ],
+      "test_preparation": [
+        0.059556
+      ],
+      "validation": [
+        0.929315
+      ]
+    },
+    "repair_observations": 0,
+    "retry_count": 0,
+    "retry_frequency": 0.0,
+    "rollback_count": 0,
+    "rollback_frequency": 0.0,
+    "run_id": "9d2fb905213e468dbd17a2016e0cfae9",
+    "run_success": true,
+    "run_success_rate_across_observed_runs": 1.0,
+    "status": "PASSED",
+    "task_attempt_success_rate": 1.0,
+    "task_attempts": 10
+  },
+  "reasoning": "deterministic templates",
+  "run_id": "9d2fb905213e468dbd17a2016e0cfae9",
+  "scenario": "ambiguous",
+  "status": "PASSED",
+  "tasks": [
+    {
+      "config": {
+        "ambiguous": true,
+        "requirement": "Make the URL shortener enterprise-ready and secure."
+      },
+      "deps": [],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "intake",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "intake",
+      "writes": [
+        "requirements.json"
+      ]
+    },
+    {
+      "config": {
+        "requirement": "Make the URL shortener enterprise-ready and secure."
+      },
+      "deps": [
+        "intake"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "clarification",
+      "max_attempts": 2,
+      "risk": "high",
+      "role": "design",
+      "writes": [
+        "clarification.json"
+      ]
+    },
+    {
+      "config": {
+        "scope": "security response headers"
+      },
+      "deps": [
+        "clarification"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "plan",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "planner",
+      "writes": [
+        "plan.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "plan"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "design",
+      "max_attempts": 2,
+      "risk": "high",
+      "role": "design",
+      "writes": [
+        "design.json"
+      ]
+    },
+    {
+      "config": {
+        "scenario": "ambiguous"
+      },
+      "deps": [
+        "design"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "implementation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "implementer",
+      "writes": [
+        "shortener/app.py",
+        "approved-scope.json"
+      ]
+    },
+    {
+      "config": {
+        "scenario": "ambiguous"
+      },
+      "deps": [
+        "design"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "test_preparation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "test_author",
+      "writes": [
+        "tests/test_service.py",
+        "tests/security/test_regressions.py",
+        "tests/test_scope.py"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "implementation",
+        "test_preparation"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "validation",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "validator",
+      "writes": []
+    },
+    {
+      "config": {},
+      "deps": [
+        "validation"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "security",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "security",
+      "writes": []
+    },
+    {
+      "config": {},
+      "deps": [
+        "security"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "release",
+      "max_attempts": 2,
+      "risk": "release",
+      "role": "release",
+      "writes": [
+        "release-review.json"
+      ]
+    },
+    {
+      "config": {},
+      "deps": [
+        "release"
+      ],
+      "entry": "dependencies_passed_and_approval_bound_to_inputs",
+      "exit": "json_schema_and_tool_validation",
+      "fallback": "human_escalation",
+      "id": "summary",
+      "max_attempts": 2,
+      "risk": "low",
+      "role": "documenter",
+      "writes": [
+        "engineering-summary.json"
+      ]
+    }
+  ],
+  "workspace": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/9d2fb905213e468dbd17a2016e0cfae9/workspace"
+}

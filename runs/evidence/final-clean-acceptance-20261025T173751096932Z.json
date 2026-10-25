@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/work/v3-clean-clone/.venv/bin/python",
+    "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/work/v3-clean-clone/scripts/acceptance.py"
+  ],
+  "cwd": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener",
+  "started": "2026-10-25T17:37:51.096932+00:00",
+  "finished": "2026-10-25T17:37:51.130927+00:00",
+  "exit_code": 0,
+  "output_path": "runs/evidence/final-clean-acceptance-20261025T173751096932Z.log",
+  "output_excerpt": "{\"acceptance_evidence\": \"PASSED\", \"scenarios\": 3, \"file_hashes_verified\": 114, \"coverage\": 93.15, \"scope\": \"Local prototype; see limitations, no human release sign-off claimed\"}\n"
+}

@@ -1,0 +1,12 @@
+{
+  "command": [
+    "make",
+    "demo-ambiguous"
+  ],
+  "cwd": "/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener",
+  "started": "2026-10-25T17:33:48.623056+00:00",
+  "finished": "2026-10-25T17:33:50.642773+00:00",
+  "exit_code": 0,
+  "output_path": "runs/evidence/final-ambiguous-20261025T173348623056Z.log",
+  "output_excerpt": ".venv/bin/python -m orchestrator.cli demo ambiguous\n{\n  \"run_id\": \"9d2fb905213e468dbd17a2016e0cfae9\",\n  \"scenario\": \"ambiguous\",\n  \"status\": \"PASSED\",\n  \"initially_blocked_without_approval\": true,\n  \"reasoning\": \"deterministic templates\",\n  \"approvals\": \"SIMULATED DEMO ONLY\",\n  \"workspace\": \"/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/9d2fb905213e468dbd17a2016e0cfae9/workspace\",\n  \"metrics\": {\n    \"run_id\": \"9d2fb905213e468dbd17a2016e0cfae9\",\n    \"status\": \"PASSED\",\n    \"run_success\": true,\n    \"run_success_rate_across_observed_runs\": 1.0,\n    \"observed_runs\": 6,\n    \"task_attempts\": 10,\n    \"task_attempt_success_rate\": 1.0,\n    \"retry_count\": 0,\n    \"retry_frequency\": 0.0,\n    \"rollback_count\": 0,\n    \"rollback_frequency\": 0.0,\n    \"gate_failures\": {},\n    \"per_task_latency_seconds\": {\n      \"intake\": [\n        0.006672\n      ],\n      \"clarification\": [\n        0.007042\n      ],\n      \"plan\": [\n        0.00755\n      ],\n      \"design\": [\n        0.008294\n      ],\n      \"implementation\": [\n        0.059818\n      ],\n      \"test_preparation\": [\n        0.059556\n      ],\n      \"validation\": [\n        0.929315\n      ],\n      \"security\": [\n        0.477289\n      ],\n      \"release\": [\n        0.01132\n      ],\n      \"summary\": [\n        0.011728\n      ]\n    },\n    \"end_to_end_seconds\": 1.805117,\n    \"mttr_seconds\": null,\n    \"repair_observations\": 0,\n    \"approval_wait_seconds\": 0.163051,\n    \"approval_wait_observations\": 3,\n    \"limitations\": \"MTTR null without repairs. Demo decisions labeled; waits are actual elapsed time. Latency includes pauses.\"\n  },\n  \"evidence\": \"/Users/ayush/Documents/Codex/2026-10-25/files-mentioned-by-the-user-assignment/outputs/agentic-url-shortener/runs/9d2fb905213e468dbd17a2016e0cfae9\"\n}\n"
+}
